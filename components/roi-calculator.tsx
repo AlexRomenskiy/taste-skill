@@ -50,19 +50,18 @@ const packageData = {
 };
 
 function AnimatedNumber({ value, prefix = "", suffix = "" }: { value: number; prefix?: string; suffix?: string }) {
-  const [displayValue, setDisplayValue] = useState(0);
-  const [mounted, setMounted] = useState(false);
-  const previousValue = useRef(0);
+  const [displayValue, setDisplayValue] = useState(value);
+  const previousValue = useRef(value);
+  const isFirstRender = useRef(true);
 
   useEffect(() => {
-    setMounted(true);
-    setDisplayValue(value);
-    previousValue.current = value;
-  }, []);
+    // Skip animation on first render
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      previousValue.current = value;
+      return;
+    }
 
-  useEffect(() => {
-    if (!mounted) return;
-    
     const start = previousValue.current;
     const end = value;
     const duration = 400;
@@ -83,16 +82,11 @@ function AnimatedNumber({ value, prefix = "", suffix = "" }: { value: number; pr
     };
 
     requestAnimationFrame(animate);
-  }, [value, mounted]);
+  }, [value]);
 
   const formatted = displayValue.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   
-  // Prevent hydration mismatch by showing 0 on server
-  if (!mounted) {
-    return <span>{prefix}0{suffix}</span>;
-  }
-  
-  return <span>{prefix}{formatted}{suffix}</span>;
+  return <span suppressHydrationWarning>{prefix}{formatted}{suffix}</span>;
 }
 
 function CustomSlider({
@@ -231,7 +225,6 @@ export function ROICalculator({ onBookClick }: { onBookClick?: () => void }) {
     setSelectedPackage(rec.package);
     setProducts([{ id: 1, price: rec.price, sales: rec.sales }]);
     setHelperApplied(true);
-    // Switch to manual mode to show results
     setMode("manual");
   };
 
