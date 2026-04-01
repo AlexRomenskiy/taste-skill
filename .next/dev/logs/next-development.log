@@ -76,3 +76,5 @@
 {"timestamp":"00:54:43.384","source":"Server","level":"LOG","message":"✓ Compiled in 41ms"}
 {"timestamp":"00:54:57.678","source":"Server","level":"LOG","message":"✓ Compiled in 30ms"}
 {"timestamp":"00:55:34.312","source":"Server","level":"LOG","message":"  Reload env: .env.development.local"}
+{"timestamp":"01:43:06.357","source":"Server","level":"LOG","message":"✓ Compiled in 119ms"}
+{"timestamp":"01:43:40.563","source":"Server","level":"LOG","message":"  Reload env: .env.development.local"}
