@@ -549,7 +549,7 @@ export function ROICalculator({ onBookClick }: { onBookClick?: () => void }) {
             >
               <div className="p-6 rounded-2xl bg-slate-800/50 border border-slate-700 space-y-6">
                 <p className="text-sm text-slate-300 font-medium mb-4">
-                  Відповідай на питання — ми підберемо оптимальні параметри
+                  Відповідай на питання — ми підбере��о оптимальні параметри
                 </p>
 
                 {/* Followers */}
@@ -737,7 +737,7 @@ export function ROICalculator({ onBookClick }: { onBookClick?: () => void }) {
                       <div className="p-4 rounded-xl bg-emerald-500/20 border border-emerald-500/30 mb-4">
                         <div className="flex items-center justify-between">
                           <p className="text-sm text-emerald-300">Очікуваний дохід:</p>
-                          <p className="text-2xl font-semibold text-emerald-400">${recommendation.expectedIncome.toLocaleString()}/міс</p>
+                          <p className="text-2xl font-semibold text-emerald-400">${(recommendation.expectedIncome ?? 0).toLocaleString()}/міс</p>
                         </div>
                       </div>
 
@@ -746,7 +746,7 @@ export function ROICalculator({ onBookClick }: { onBookClick?: () => void }) {
                         const recPkg = packageData[recommendation.package];
                         const monthlyExpenses = recPkg.support + recPkg.platforms;
                         const totalInvestment = recPkg.investment;
-                        const expectedProfit = recommendation.expectedIncome - monthlyExpenses;
+                        const expectedProfit = (recommendation.expectedIncome ?? 0) - monthlyExpenses;
                         const paybackMonths = expectedProfit > 0 ? Math.ceil(totalInvestment / expectedProfit) : null;
                         return (
                           <div className="p-4 rounded-xl bg-slate-800/30 border border-slate-700 mb-6">

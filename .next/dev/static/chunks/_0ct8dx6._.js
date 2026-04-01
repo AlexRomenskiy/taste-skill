@@ -4002,7 +4002,7 @@ function ROICalculator({ onBookClick }) {
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2d$experimental$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                     className: "text-sm text-slate-300 font-medium mb-4",
-                                    children: "Відповідай на питання — ми підберемо оптимальні параметри"
+                                    children: "Відповідай на питання — ми підбере��о оптимальні параметри"
                                 }, void 0, false, {
                                     fileName: "[project]/components/roi-calculator.tsx",
                                     lineNumber: 551,
@@ -4696,7 +4696,7 @@ function ROICalculator({ onBookClick }) {
                                                             className: "text-2xl font-semibold text-emerald-400",
                                                             children: [
                                                                 "$",
-                                                                recommendation.expectedIncome.toLocaleString(),
+                                                                (recommendation.expectedIncome ?? 0).toLocaleString(),
                                                                 "/міс"
                                                             ]
                                                         }, void 0, true, {
@@ -4719,7 +4719,7 @@ function ROICalculator({ onBookClick }) {
                                                 const recPkg = packageData[recommendation.package];
                                                 const monthlyExpenses = recPkg.support + recPkg.platforms;
                                                 const totalInvestment = recPkg.investment;
-                                                const expectedProfit = recommendation.expectedIncome - monthlyExpenses;
+                                                const expectedProfit = (recommendation.expectedIncome ?? 0) - monthlyExpenses;
                                                 const paybackMonths = expectedProfit > 0 ? Math.ceil(totalInvestment / expectedProfit) : null;
                                                 return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2d$experimental$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "p-4 rounded-xl bg-slate-800/30 border border-slate-700 mb-6",
