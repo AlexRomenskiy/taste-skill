@@ -37,9 +37,9 @@ const nicheLabels: Record<Niche, string> = {
 // Real industry data from Instagram DM & Telegram funnel research (2025-2026)
 // Sources:
 // - Instagram DM: 90% open rate, 50-60% reply rate, 15-20% DM-to-sale (LeadResponse, Unkoa, ManyChat)
-// - Beauty: 1-1.3% conversion, 76% find via social, 61% book via Instagram (Napolify, Instavipbio)
-// - Handmade: 3.8% median Etsy, 6.2% personalized items (Alibaba 2026)
-// - Consulting: 14.6% LinkedIn inbound leads, 6.1% ads (ConnectSafely 2026)
+// - Beauty: 76% find via social, 61% book via Instagram (Napolify, Instavipbio)
+// - Handmade: 6.2% personalized items conversion (Alibaba 2026)
+// - Consulting: 12% Instagram + Telegram expert funnels (Creatorflow 2026)
 const nicheData: Record<Niche, { 
   conversionRate: number; 
   suggestedPrice: number;
@@ -51,15 +51,15 @@ const nicheData: Record<Niche, {
     conversionRate: 0.15, // 15% - Instagram DM targeted campaigns
     suggestedPrice: 297, 
     priceRange: { min: 147, max: 597 },
-    source: "LeadResponse 2026, ManyChat Statistics",
-    insight: "Instagram DM: 90% open rate, 15-20% конверсія у продаж. Коучі з автоматизацією досягають 80% конверсії лідів."
+    source: "LeadResponse 2026, ManyChat",
+    insight: "Повідомлення в Instagram Direct: 90% відкривають, 15-20% купують. Коучі з автоматизацією досягають 80% конверсії лідів."
   },
   fitness: { 
     conversionRate: 0.18, // 18% - higher due to visual transformation content
     suggestedPrice: 97, 
     priceRange: { min: 47, max: 247 },
-    source: "Unkoa Instagram DM Report 2025",
-    insight: "Фітнес-ніша: 50-60% reply rate в DM. Візуальні результати підвищують конверсію до 18%."
+    source: "Unkoa Instagram 2025",
+    insight: "Фітнес-ніша: 50-60% відповідають на повідомлення. Візуальні результати (до/після) підвищують конверсію до 18%."
   },
   education: { 
     conversionRate: 0.12, // 12% - standard for education
@@ -83,11 +83,11 @@ const nicheData: Record<Niche, {
     insight: "Персоналізовані товари: до 6.2% конверсія. Instagram + Telegram для прийому замовлень підвищує довіру."
   },
   consulting: { 
-    conversionRate: 0.14, // 14.6% LinkedIn inbound leads
+    conversionRate: 0.12, // 12% - Instagram + Telegram for experts
     suggestedPrice: 397, 
     priceRange: { min: 197, max: 997 },
-    source: "ConnectSafely 2026, LinkedIn B2B Report",
-    insight: "LinkedIn генерує 80% B2B лідів. Конверсія inbound лідів: 14.6%. Ніша-контент дає 15-22% залучення."
+    source: "Creatorflow 2026, Instagram Expert Accounts",
+    insight: "Експерти в Instagram: 12% конверсія через прогрів в Telegram. Експертний контент + кейси підвищують довіру."
   },
   other: { 
     conversionRate: 0.10, // 10% - Telegram bot case study
@@ -105,8 +105,22 @@ interface Product {
 }
 
 const packageData = {
-  1: { name: "Система продажів", investment: 495, support: 150 },
-  2: { name: "Продуктова лінійка", investment: 990, support: 250 },
+  1: { 
+    name: "Система продажів", 
+    investment: 495, 
+    support: 150,
+    platforms: 45, // estimated platform costs
+    description: "Один основний продукт з автоматизованою воронкою",
+  },
+  2: { 
+    name: "Продуктова лінійка", 
+    investment: 990, 
+    support: 250,
+    platforms: 45,
+    description: "Два продукти: недорогий вхідний (tripwire) + основний флагман",
+    tripwireInfo: "Tripwire — це недорогий продукт ($27-97), який допомагає клієнту зробити першу покупку і побудувати довіру",
+    flagshipInfo: "Флагман — основний продукт з високою ціною, який продається після tripwire",
+  },
 };
 
 function AnimatedNumber({ value, prefix = "", suffix = "" }: { value: number; prefix?: string; suffix?: string }) {
@@ -313,10 +327,11 @@ export function ROICalculator({ onBookClick }: { onBookClick?: () => void }) {
       
       if (currentEngagementRate < benchmarkEngagementRate) {
         // Low engagement - suggest improving it
-        growthTip = `Твій engagement rate: ${currentEngagementRate.toFixed(2)}% (середній: 1%). Покращ залученість через Reels/Stories — і з ${followers.toLocaleString()} підписників отримаєш ${Math.round(followers * benchmarkEngagementRate / 100)} повідомлень.`;
+        const potentialMessages = Math.round(followers * benchmarkEngagementRate / 100);
+        growthTip = `Зараз тобі пишуть ${currentEngagementRate.toFixed(1)}% підписників (в середньому пишуть 1%). Збільш активність через Reels та Stories — і з ${followers.toLocaleString()} підписників отримаєш ~${potentialMessages} повідомлень на місяць.`;
       } else {
         // Good engagement - need more followers
-        growthTip = `Твій engagement ${currentEngagementRate.toFixed(2)}% — це добре! Для ${neededMessages} повідомлень потрібно ~${followersNeededAtCurrentEngagement.toLocaleString()} підписників.`;
+        growthTip = `Твоя аудиторія активна (${currentEngagementRate.toFixed(1)}% пишуть в Direct) — це чудово! Для ${neededMessages} повідомлень потрібно наростити аудиторію до ~${followersNeededAtCurrentEngagement.toLocaleString()} підписників.`;
       }
       
       suggestion = `Для $${desiredIncome.toLocaleString()}/міс потрібно ~${neededMessages} повідомлень. Зараз досяжно ~$${maxAchievableIncome.toLocaleString()}/міс.`;
@@ -392,11 +407,14 @@ export function ROICalculator({ onBookClick }: { onBookClick?: () => void }) {
 
   // Calculations
   const monthlyRevenue = products.reduce((sum, p) => sum + p.price * p.sales, 0);
-  const supportCosts = packageData[selectedPackage].support + 45;
-  const netProfit = monthlyRevenue - supportCosts;
-  const investment = packageData[selectedPackage].investment;
+  const pkg = packageData[selectedPackage];
+  const monthlyCosts = pkg.support + pkg.platforms; // monthly recurring costs
+  const netProfit = monthlyRevenue - monthlyCosts;
+  const investment = pkg.investment; // one-time setup cost
+  const totalFirstMonthCost = investment + monthlyCosts; // total cost in first month
+  // Payback calculation includes initial investment
   const paybackDays = netProfit > 0 ? Math.round((investment / netProfit) * 30) : null;
-  const yearlyIncome = netProfit * 12;
+  const yearlyIncome = (netProfit * 12) - investment; // yearly profit minus initial investment
 
   return (
     <section ref={calculatorRef} className="py-20 bg-slate-900 scroll-mt-4">
@@ -579,11 +597,17 @@ export function ROICalculator({ onBookClick }: { onBookClick?: () => void }) {
                           <p className={`text-sm ${(recommendation.gap ?? 0) > 0 ? 'text-amber-300' : 'text-emerald-300'}`}>
                             {recommendation.suggestion}
                           </p>
-                          {(recommendation.gap ?? 0) > 0 && recommendation.package === 2 && (
-                            <p className="text-xs text-amber-400/70 mt-2">
-                              Рекомендуємо Пакет 2 з двома продуктами для досягнення цілі.
-                            </p>
-                          )}
+{(recommendation.gap ?? 0) > 0 && recommendation.package === 2 && (
+  <div className="mt-3 p-3 bg-slate-800/50 rounded-xl">
+    <p className="text-xs text-amber-300 font-medium mb-2">Рекомендуємо Пакет 2 — Продуктова лінійка</p>
+    <p className="text-xs text-slate-400 mb-1">
+      <span className="text-amber-400">Tripwire</span> — недорогий вхідний продукт ($27-97), щоб клієнт зробив першу покупку
+    </p>
+    <p className="text-xs text-slate-400">
+      <span className="text-amber-400">Флагман</span> — основний продукт з вищою ціною, який продається після tripwire
+    </p>
+  </div>
+  )}
                         </div>
                       )}
 
@@ -610,7 +634,8 @@ export function ROICalculator({ onBookClick }: { onBookClick?: () => void }) {
                         </div>
                       </div>
 
-                      <div className="grid grid-cols-2 gap-4 mb-6">
+                      {/* Income and Investment Summary */}
+                      <div className="grid grid-cols-2 gap-4 mb-4">
                         <div className="p-4 rounded-xl bg-slate-800/30">
                           <p className="text-xs text-slate-400 mb-2">Досяжний дохід/міс:</p>
                           <p className={`text-2xl font-semibold ${(recommendation?.gap ?? 0) > 0 ? 'text-amber-400' : 'text-emerald-400'}`}>
@@ -629,6 +654,36 @@ export function ROICalculator({ onBookClick }: { onBookClick?: () => void }) {
                           </p>
                         </div>
                       </div>
+
+                      {/* Investment Breakdown */}
+                      {(() => {
+                        const recPkg = packageData[recommendation.package];
+                        const monthlyExpenses = recPkg.support + recPkg.platforms;
+                        const totalInvestment = recPkg.investment;
+                        const expectedProfit = (recommendation?.expectedIncome ?? 0) - monthlyExpenses;
+                        const paybackMonths = expectedProfit > 0 ? Math.ceil(totalInvestment / expectedProfit) : null;
+                        return (
+                          <div className="p-4 rounded-xl bg-slate-800/30 border border-slate-700 mb-6">
+                            <p className="text-xs text-slate-400 mb-3">Твоя інвестиція:</p>
+                            <div className="grid grid-cols-3 gap-3 text-center">
+                              <div>
+                                <p className="text-lg font-semibold text-white">${totalInvestment}</p>
+                                <p className="text-[10px] text-slate-500">разово (старт)</p>
+                              </div>
+                              <div>
+                                <p className="text-lg font-semibold text-white">${monthlyExpenses}</p>
+                                <p className="text-[10px] text-slate-500">щомісяця</p>
+                              </div>
+                              <div>
+                                <p className="text-lg font-semibold text-emerald-400">
+                                  {paybackMonths ? `${paybackMonths} міс` : "—"}
+                                </p>
+                                <p className="text-[10px] text-slate-500">окупність</p>
+                              </div>
+                            </div>
+                          </div>
+                        );
+                      })()}
 
                       {/* Source and Insight */}
                       <div className="p-4 rounded-xl bg-slate-800/50 border border-slate-700 mb-6">
@@ -667,25 +722,31 @@ export function ROICalculator({ onBookClick }: { onBookClick?: () => void }) {
         <div className="mb-10">
           <p className="text-xs text-slate-500 uppercase tracking-widest mb-4">Крок 1 — Вибір пакету</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-            {([1, 2] as Package[]).map((pkg) => (
+            {([1, 2] as Package[]).map((pkgNum) => {
+              const pkgInfo = packageData[pkgNum];
+              return (
               <button
-                key={pkg}
-                onClick={() => handlePackageChange(pkg)}
+                key={pkgNum}
+                onClick={() => handlePackageChange(pkgNum)}
                 disabled={isLocked}
                 className={`p-5 rounded-2xl border transition-all duration-300 text-left ${
-                  selectedPackage === pkg
+                  selectedPackage === pkgNum
                     ? "bg-emerald-500/10 border-emerald-500/50"
                     : "bg-slate-800/50 border-slate-700 hover:border-slate-600"
                 } ${isLocked ? "opacity-50 cursor-not-allowed" : ""}`}
               >
-                <p className={`text-sm font-medium mb-1 ${selectedPackage === pkg ? "text-emerald-400" : "text-white"}`}>
-                  Пакет {pkg} — {packageData[pkg].name}
+                <p className={`text-sm font-medium mb-1 ${selectedPackage === pkgNum ? "text-emerald-400" : "text-white"}`}>
+                  Пакет {pkgNum} — {pkgInfo.name}
                 </p>
-                <p className="text-xs text-slate-400">
-                  Інвестиція ${packageData[pkg].investment} · Підтримка ${packageData[pkg].support}/міс
+                <p className="text-xs text-slate-400 mb-2">
+                  {pkgInfo.description}
+                </p>
+                <p className="text-xs text-slate-500">
+                  Інвестиція ${pkgInfo.investment} · Підтримка ${pkgInfo.support}/міс + платформи
                 </p>
               </button>
-            ))}
+              );
+            })}
           </div>
         </div>
 
@@ -799,14 +860,18 @@ export function ROICalculator({ onBookClick }: { onBookClick?: () => void }) {
               </p>
             </div>
 
-            {/* Support Costs */}
+            {/* Costs Breakdown */}
             <div className="p-4 rounded-2xl bg-slate-800/50 border border-slate-700">
               <div className="flex items-center gap-2 mb-2">
                 <ArrowsClockwise size={16} weight="light" className="text-slate-400" />
                 <span className="text-[10px] text-slate-500 uppercase tracking-wider">Витрати</span>
               </div>
               <p className="text-xl font-medium text-slate-300">
-                <AnimatedNumber value={supportCosts} prefix="$" />
+                <AnimatedNumber value={monthlyCosts} prefix="$" />
+                <span className="text-xs font-normal text-slate-500">/міс</span>
+              </p>
+              <p className="text-[10px] text-slate-500 mt-1">
+                + ${investment} разова інвестиція
               </p>
             </div>
 
