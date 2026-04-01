@@ -8,6 +8,7 @@ import { SolutionSection } from "@/components/solution-section";
 import { PackagesSection } from "@/components/packages-section";
 import { CostsSection } from "@/components/costs-section";
 import { FAQSection } from "@/components/faq-section";
+import { ROICalculator } from "@/components/roi-calculator";
 import { FinalCTA } from "@/components/final-cta";
 import { Footer } from "@/components/footer";
 import { CalendlyModal } from "@/components/calendly-modal";
@@ -27,6 +28,7 @@ export default function HomePage() {
         <SolutionSection />
         <PackagesSection onBookClick={openCalendly} />
         <CostsSection />
+        <ROICalculator onBookClick={openCalendly} />
         <FAQSection />
         <FinalCTA onBookClick={openCalendly} />
       </main>
