@@ -257,6 +257,10 @@ export function ROICalculator({ onBookClick }: { onBookClick?: () => void }) {
     source: string;
     insight: string;
     conversionRate: number;
+    expectedIncome: number;
+    gap: number; // difference between desired and achievable
+    neededMessages: number; // how many messages needed to reach goal
+    suggestion: string; // actionable advice
   } | null>(null);
 
   // Calculate recommendations based on Instagram DM & Telegram funnel statistics
@@ -268,23 +272,39 @@ export function ROICalculator({ onBookClick }: { onBookClick?: () => void }) {
     // From messages that come in, ~70% are warm leads ready for funnel
     const warmLeads = Math.round(messages * 0.7);
     
-    // Apply niche-specific conversion rate (already includes automation boost from research)
-    // These rates are from real Instagram DM + Telegram funnel campaigns
+    // Apply niche-specific conversion rate
     const expectedSales = Math.max(1, Math.round(warmLeads * conversionRate));
     
-    // Calculate recommended price based on desired income and realistic sales
-    let recommendedPrice = suggestedPrice;
-    if (desiredIncome > 0 && expectedSales > 0) {
-      const priceForGoal = Math.round(desiredIncome / expectedSales);
-      // Weight: 30% market average, 70% goal-based (but within realistic range)
-      recommendedPrice = Math.round(suggestedPrice * 0.3 + priceForGoal * 0.7);
-      // Clamp to niche-specific price range
-      recommendedPrice = Math.max(priceRange.min, Math.min(priceRange.max, recommendedPrice));
+    // Calculate what price is needed to hit desired income with current traffic
+    const priceToHitGoal = Math.round(desiredIncome / expectedSales);
+    
+    // Check if goal is achievable within reasonable price range
+    const maxReasonablePrice = priceRange.max;
+    const maxAchievableIncome = expectedSales * maxReasonablePrice;
+    
+    let recommendedPrice: number;
+    let suggestion: string;
+    let neededMessages: number;
+    
+    if (priceToHitGoal <= maxReasonablePrice) {
+      // Goal achievable with current traffic
+      recommendedPrice = Math.max(priceRange.min, priceToHitGoal);
+      suggestion = `З твоїм трафіком (${messages} повідомлень) ти можеш досягти $${desiredIncome.toLocaleString()} з ціною $${recommendedPrice}.`;
+      neededMessages = messages;
+    } else {
+      // Goal NOT achievable - need more traffic
+      recommendedPrice = maxReasonablePrice;
+      // Calculate how many messages needed to hit goal at max price
+      const salesNeeded = Math.ceil(desiredIncome / maxReasonablePrice);
+      neededMessages = Math.ceil(salesNeeded / conversionRate / 0.7);
+      suggestion = `Для $${desiredIncome.toLocaleString()}/міс потрібно ~${neededMessages} повідомлень. Зараз з ${messages} повідомлень досяжно ~$${maxAchievableIncome.toLocaleString()}/міс.`;
     }
+    
+    const actualExpectedIncome = expectedSales * recommendedPrice;
+    const gap = desiredIncome - actualExpectedIncome;
 
-    // Package recommendation based on income goal and number of products needed
-    // $3000+/month usually requires product ladder (Package 2)
-    const recommendedPackage: Package = desiredIncome > 3000 ? 2 : 1;
+    // Package recommendation: if gap is significant or income goal high, suggest Package 2
+    const recommendedPackage: Package = (gap > 1000 || desiredIncome > 3000) ? 2 : 1;
 
     return {
       price: recommendedPrice,
@@ -292,7 +312,11 @@ export function ROICalculator({ onBookClick }: { onBookClick?: () => void }) {
       package: recommendedPackage,
       source: nicheInfo.source,
       insight: nicheInfo.insight,
-      conversionRate: Math.round(conversionRate * 100), // as percentage (already decimal like 0.15 = 15%)
+      conversionRate: Math.round(conversionRate * 100),
+      expectedIncome: actualExpectedIncome,
+      gap: Math.max(0, gap),
+      neededMessages,
+      suggestion,
     };
   };
 
@@ -509,10 +533,31 @@ export function ROICalculator({ onBookClick }: { onBookClick?: () => void }) {
                       transition={{ duration: 0.4, ease: "easeOut" }}
                       className="mt-6 p-6 rounded-2xl bg-emerald-500/10 border border-emerald-500/30"
                     >
-                      <div className="flex items-center gap-2 mb-4">
-                        <CheckCircle size={20} weight="fill" className="text-emerald-400" />
-                        <span className="text-sm font-medium text-emerald-400">Наша рекомендація для тебе</span>
+                      {/* Header with goal comparison */}
+                      <div className="flex items-center justify-between mb-4">
+                        <div className="flex items-center gap-2">
+                          <CheckCircle size={20} weight="fill" className="text-emerald-400" />
+                          <span className="text-sm font-medium text-emerald-400">Наша рекомендація</span>
+                        </div>
+                        <div className="text-right">
+                          <p className="text-xs text-slate-500">Твоя ціль</p>
+                          <p className="text-sm font-semibold text-white">${desiredIncome.toLocaleString()}/міс</p>
+                        </div>
                       </div>
+
+                      {/* Suggestion block - actionable advice */}
+                      {recommendation.suggestion && (
+                        <div className={`p-4 rounded-xl mb-6 ${(recommendation.gap ?? 0) > 0 ? 'bg-amber-500/10 border border-amber-500/30' : 'bg-emerald-500/10 border border-emerald-500/30'}`}>
+                          <p className={`text-sm ${(recommendation.gap ?? 0) > 0 ? 'text-amber-300' : 'text-emerald-300'}`}>
+                            {recommendation.suggestion}
+                          </p>
+                          {(recommendation.gap ?? 0) > 0 && recommendation.package === 2 && (
+                            <p className="text-xs text-amber-400/70 mt-2">
+                              Рекомендуємо Пакет 2 з двома продуктами для досягнення цілі.
+                            </p>
+                          )}
+                        </div>
+                      )}
 
                       <div className="grid grid-cols-3 gap-4 mb-6">
                         <div className="text-center p-4 rounded-xl bg-slate-800/50">
@@ -531,13 +576,18 @@ export function ROICalculator({ onBookClick }: { onBookClick?: () => void }) {
 
                       <div className="grid grid-cols-2 gap-4 mb-6">
                         <div className="p-4 rounded-xl bg-slate-800/30">
-                          <p className="text-xs text-slate-400 mb-2">Очікуваний дохід/міс:</p>
-                          <p className="text-2xl font-semibold text-emerald-400">
-                            ${(recommendation.price * recommendation.sales).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                          <p className="text-xs text-slate-400 mb-2">Досяжний дохід/міс:</p>
+                          <p className={`text-2xl font-semibold ${(recommendation.gap ?? 0) > 0 ? 'text-amber-400' : 'text-emerald-400'}`}>
+                            ${(recommendation.expectedIncome ?? 0).toLocaleString()}
                           </p>
+                          {(recommendation.gap ?? 0) > 0 && (
+                            <p className="text-xs text-amber-400/70 mt-1">
+                              −${(recommendation.gap ?? 0).toLocaleString()} від цілі
+                            </p>
+                          )}
                         </div>
                         <div className="p-4 rounded-xl bg-slate-800/30">
-                          <p className="text-xs text-slate-400 mb-2">Конверсія з автоматизацією:</p>
+                          <p className="text-xs text-slate-400 mb-2">Конверсія ({nicheLabels[niche]}):</p>
                           <p className="text-2xl font-semibold text-white">
                             {recommendation.conversionRate}%
                           </p>

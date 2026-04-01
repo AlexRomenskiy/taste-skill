@@ -80,8 +80,11 @@
   :root, :host {
     --font-sans: "Geist", system-ui, -apple-system, sans-serif;
     --font-mono: "Geist Mono", ui-monospace, monospace;
+    --color-amber-300: #ffd236;
     --color-amber-400: #fcbb00;
+    --color-amber-500: #f99c00;
     --color-emerald-200: #a4f4cf;
+    --color-emerald-300: #5ee9b5;
     --color-emerald-400: #00d294;
     --color-emerald-500: #00bb7f;
     --color-blue-400: #54a2ff;
@@ -168,8 +171,11 @@
 
   @supports (color: lab(0% 0 0)) {
     :root, :host {
+      --color-amber-300: lab(86.4156% 6.13147 78.3961);
       --color-amber-400: lab(80.1641% 16.6016 99.2089);
+      --color-amber-500: lab(72.7183% 31.8672 97.9407);
       --color-emerald-200: lab(90.2247% -31.039 9.47084);
+      --color-emerald-300: lab(83.9203% -48.7124 13.8849);
       --color-emerald-400: lab(75.0771% -60.7313 19.4147);
       --color-emerald-500: lab(66.9756% -58.27 19.5419);
       --color-blue-400: lab(65.0361% -1.42065 -56.9802);
@@ -1191,6 +1197,16 @@
     }
   }
 
+  .border-amber-500\/30 {
+    border-color: #f99c004d;
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    .border-amber-500\/30 {
+      border-color: color-mix(in oklab, var(--color-amber-500) 30%, transparent);
+    }
+  }
+
   .border-border {
     border-color: var(--color-border);
   }
@@ -1300,6 +1316,16 @@
   @supports (color: color-mix(in lab, red, red)) {
     .bg-accent\/10 {
       background-color: color-mix(in oklab, var(--color-accent) 10%, transparent);
+    }
+  }
+
+  .bg-amber-500\/10 {
+    background-color: #f99c001a;
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    .bg-amber-500\/10 {
+      background-color: color-mix(in oklab, var(--color-amber-500) 10%, transparent);
     }
   }
 
@@ -1678,6 +1704,10 @@
     text-align: left;
   }
 
+  .text-right {
+    text-align: right;
+  }
+
   .font-mono {
     font-family: var(--font-mono);
   }
@@ -1811,12 +1841,34 @@
     color: var(--color-accent-foreground);
   }
 
+  .text-amber-300 {
+    color: var(--color-amber-300);
+  }
+
+  .text-amber-400 {
+    color: var(--color-amber-400);
+  }
+
+  .text-amber-400\/70 {
+    color: #fcbb00b3;
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    .text-amber-400\/70 {
+      color: color-mix(in oklab, var(--color-amber-400) 70%, transparent);
+    }
+  }
+
   .text-background {
     color: var(--color-background);
   }
 
   .text-emerald-200 {
     color: var(--color-emerald-200);
+  }
+
+  .text-emerald-300 {
+    color: var(--color-emerald-300);
   }
 
   .text-emerald-400 {
