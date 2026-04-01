@@ -257,6 +257,7 @@ export function ROICalculator({ onBookClick }: { onBookClick?: () => void }) {
   const [selectedPackage, setSelectedPackage] = useState<Package>(1);
   const [products, setProducts] = useState<Product[]>([{ id: 1, price: 197, sales: 3, type: "flagship" }]);
   const [isLocked, setIsLocked] = useState(false);
+  const [includeSupport, setIncludeSupport] = useState(true); // Support toggle, default ON
 
   // Helper mode inputs
   const [followers, setFollowers] = useState(5000);
@@ -444,9 +445,13 @@ export function ROICalculator({ onBookClick }: { onBookClick?: () => void }) {
   // Calculations
   const monthlyRevenue = products.reduce((sum, p) => sum + p.price * p.sales, 0);
   const pkg = packageData[selectedPackage];
-  const monthlyCosts = pkg.support + pkg.platforms;
+  // Monthly costs: platforms always required, support is optional
+  const platformCosts = pkg.platforms;
+  const supportCosts = includeSupport ? pkg.support : 0;
+  const monthlyCosts = supportCosts + platformCosts;
   const netProfit = monthlyRevenue - monthlyCosts;
   const investment = pkg.investment;
+  // Payback from initial investment
   const paybackDays = netProfit > 0 ? Math.round((investment / netProfit) * 30) : null;
   const yearlyIncome = (netProfit * 12) - investment;
 
@@ -833,12 +838,43 @@ export function ROICalculator({ onBookClick }: { onBookClick?: () => void }) {
                       <p className="text-xs text-slate-400 mb-2">
                         {pkgInfo.description}
                       </p>
-                      <p className="text-xs text-slate-500">
-                        Інвестиція ${pkgInfo.investment} · Підтримка ${pkgInfo.support + pkgInfo.platforms}/міс
-                      </p>
+                      <div className="text-xs text-slate-500 space-y-1">
+                        <p>Разова інвестиція: <span className="text-white font-medium">${pkgInfo.investment}</span></p>
+                        <p>Платформи: <span className="text-slate-400">${pkgInfo.platforms}/міс</span> <span className="text-slate-600">(обов&apos;язково)</span></p>
+                      </div>
                     </button>
                   );
                 })}
+              </div>
+              
+              {/* Support Toggle */}
+              <div className="mt-6 p-4 rounded-xl bg-slate-800/30 border border-slate-700">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-sm font-medium text-white">Щомісячне супроводження</p>
+                    <p className="text-xs text-slate-400 mt-1">
+                      Підтримка та консультації: ${packageData[selectedPackage].support}/міс
+                    </p>
+                  </div>
+                  <button
+                    onClick={() => setIncludeSupport(!includeSupport)}
+                    disabled={isLocked}
+                    className={`relative w-12 h-6 rounded-full transition-colors duration-200 ${
+                      includeSupport ? "bg-emerald-500" : "bg-slate-600"
+                    } ${isLocked ? "opacity-50 cursor-not-allowed" : ""}`}
+                  >
+                    <div
+                      className={`absolute top-1 w-4 h-4 bg-white rounded-full transition-transform duration-200 ${
+                        includeSupport ? "translate-x-7" : "translate-x-1"
+                      }`}
+                    />
+                  </button>
+                </div>
+                {!includeSupport && (
+                  <p className="text-[10px] text-amber-400/70 mt-2">
+                    Без супроводження ти працюєш самостійно з автоматизацією
+                  </p>
+                )}
               </div>
             </div>
 
@@ -977,13 +1013,24 @@ export function ROICalculator({ onBookClick }: { onBookClick?: () => void }) {
                     <ArrowsClockwise size={16} weight="light" className="text-slate-400" />
                     <span className="text-[10px] text-slate-500 uppercase tracking-wider">Витрати</span>
                   </div>
-                  <p className="text-xl font-medium text-slate-300">
-                    <AnimatedNumber value={monthlyCosts} prefix="$" />
-                    <span className="text-xs font-normal text-slate-500">/міс</span>
-                  </p>
-                  <p className="text-[10px] text-slate-500 mt-1">
-                    + ${investment} разова інвестиція
-                  </p>
+                  <div className="space-y-1">
+                    <p className="text-[10px] text-slate-500">
+                      Разова інвестиція: <span className="text-white font-medium">${investment}</span>
+                    </p>
+                    <p className="text-[10px] text-slate-500">
+                      Платформи: <span className="text-slate-300">${platformCosts}/міс</span>
+                    </p>
+                    {includeSupport && (
+                      <p className="text-[10px] text-slate-500">
+                        Супровід: <span className="text-slate-300">${supportCosts}/міс</span>
+                      </p>
+                    )}
+                    <div className="pt-1 border-t border-slate-700">
+                      <p className="text-sm font-medium text-slate-300">
+                        Щомісяця: $<AnimatedNumber value={monthlyCosts} />
+                      </p>
+                    </div>
+                  </div>
                 </div>
 
                 {/* Net Profit */}
@@ -1019,10 +1066,13 @@ export function ROICalculator({ onBookClick }: { onBookClick?: () => void }) {
                 <div className="p-4 rounded-2xl bg-slate-800/50 border border-slate-700">
                   <div className="flex items-center gap-2 mb-2">
                     <ChartLineUp size={16} weight="light" className="text-slate-400" />
-                    <span className="text-[10px] text-slate-500 uppercase tracking-wider">За рік</span>
+                    <span className="text-[10px] text-slate-500 uppercase tracking-wider">Чистий за рік</span>
                   </div>
                   <p className={`text-xl font-medium ${yearlyIncome >= 0 ? "text-emerald-400" : "text-red-400"}`}>
                     {yearlyIncome >= 0 ? "" : "-"}$<AnimatedNumber value={Math.abs(yearlyIncome)} />
+                  </p>
+                  <p className="text-[10px] text-slate-500 mt-1">
+                    після окупності інвестиції
                   </p>
                 </div>
               </div>
