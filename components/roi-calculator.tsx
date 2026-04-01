@@ -11,9 +11,32 @@ import {
   Lock,
   Plus,
   X,
+  Lightbulb,
+  Users,
+  ChatCircle,
+  Target,
+  Wallet,
 } from "@phosphor-icons/react";
 
 type Package = 1 | 2;
+type CalcMode = "manual" | "helper";
+
+type Niche = "coaching" | "fitness" | "education" | "other";
+
+const nicheLabels: Record<Niche, string> = {
+  coaching: "Коучинг",
+  fitness: "Фітнес",
+  education: "Освіта",
+  other: "Інше",
+};
+
+// Conversion rates and price suggestions by niche
+const nicheData: Record<Niche, { conversionRate: number; suggestedPrice: number }> = {
+  coaching: { conversionRate: 0.025, suggestedPrice: 150 },
+  fitness: { conversionRate: 0.03, suggestedPrice: 80 },
+  education: { conversionRate: 0.02, suggestedPrice: 100 },
+  other: { conversionRate: 0.02, suggestedPrice: 100 },
+};
 
 interface Product {
   id: number;
@@ -146,9 +169,56 @@ function CustomSlider({
 }
 
 export function ROICalculator({ onBookClick }: { onBookClick?: () => void }) {
+  const [mode, setMode] = useState<CalcMode>("manual");
   const [selectedPackage, setSelectedPackage] = useState<Package>(1);
   const [products, setProducts] = useState<Product[]>([{ id: 1, price: 100, sales: 3 }]);
   const [isLocked, setIsLocked] = useState(false);
+
+  // Helper mode inputs
+  const [followers, setFollowers] = useState(5000);
+  const [messages, setMessages] = useState(50);
+  const [niche, setNiche] = useState<Niche>("coaching");
+  const [desiredIncome, setDesiredIncome] = useState(2000);
+  const [helperApplied, setHelperApplied] = useState(false);
+
+  // Calculate recommendations based on helper inputs
+  const calculateRecommendations = () => {
+    const { conversionRate, suggestedPrice } = nicheData[niche];
+    
+    // Estimate monthly leads from messages (assuming 60% of messages are potential leads)
+    const potentialLeads = Math.round(messages * 0.6);
+    
+    // Calculate expected sales based on conversion rate
+    const expectedSales = Math.max(1, Math.round(potentialLeads * conversionRate * 10));
+    
+    // Adjust price based on desired income
+    let recommendedPrice = suggestedPrice;
+    if (desiredIncome > 0 && expectedSales > 0) {
+      const priceForGoal = Math.round(desiredIncome / expectedSales);
+      // Blend suggested price with goal-based price
+      recommendedPrice = Math.round((suggestedPrice + priceForGoal) / 2);
+      // Clamp to slider range
+      recommendedPrice = Math.max(15, Math.min(1500, recommendedPrice));
+    }
+
+    // Determine package: if desired income is high, suggest package 2
+    const recommendedPackage: Package = desiredIncome > 3000 ? 2 : 1;
+
+    return {
+      price: recommendedPrice,
+      sales: Math.max(1, Math.min(30, expectedSales)),
+      package: recommendedPackage,
+    };
+  };
+
+  const applyRecommendations = () => {
+    const rec = calculateRecommendations();
+    setSelectedPackage(rec.package);
+    setProducts([{ id: 1, price: rec.price, sales: rec.sales }]);
+    setHelperApplied(true);
+    // Switch to manual mode to show results
+    setMode("manual");
+  };
 
   const addProduct = () => {
     if (products.length < 2) {
@@ -189,7 +259,7 @@ export function ROICalculator({ onBookClick }: { onBookClick?: () => void }) {
     <section className="py-20 bg-slate-900">
       <div className="container mx-auto px-4 max-w-4xl">
         {/* Header */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-8">
           <h2 className="text-3xl md:text-4xl font-light tracking-tight text-white mb-3">
             Калькулятор окупності
           </h2>
@@ -198,6 +268,151 @@ export function ROICalculator({ onBookClick }: { onBookClick?: () => void }) {
           </p>
         </div>
 
+        {/* Mode Toggle */}
+        <div className="flex justify-center mb-10">
+          <div className="inline-flex items-center gap-1 p-1 bg-slate-800 rounded-full border border-slate-700">
+            <button
+              onClick={() => setMode("manual")}
+              className={`px-5 py-2.5 text-sm font-medium rounded-full transition-all duration-300 ${
+                mode === "manual"
+                  ? "bg-emerald-500 text-white shadow-sm"
+                  : "text-slate-400 hover:text-white"
+              }`}
+            >
+              Знаю свої дані
+            </button>
+            <button
+              onClick={() => { setMode("helper"); setHelperApplied(false); }}
+              className={`px-5 py-2.5 text-sm font-medium rounded-full transition-all duration-300 flex items-center gap-2 ${
+                mode === "helper"
+                  ? "bg-emerald-500 text-white shadow-sm"
+                  : "text-slate-400 hover:text-white"
+              }`}
+            >
+              <Lightbulb size={16} weight={mode === "helper" ? "fill" : "regular"} />
+              Допоможіть порахувати
+            </button>
+          </div>
+        </div>
+
+        {/* Helper Mode Content */}
+        <AnimatePresence mode="wait">
+          {mode === "helper" && (
+            <motion.div
+              key="helper"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.3 }}
+              className="mb-10"
+            >
+              <div className="p-6 rounded-2xl bg-slate-800/50 border border-slate-700 space-y-6">
+                <p className="text-sm text-slate-300 font-medium mb-4">
+                  Відповідай на питання — ми підберемо оптимальні параметри
+                </p>
+
+                {/* Followers */}
+                <div>
+                  <div className="flex items-center gap-2 mb-3">
+                    <Users size={16} weight="light" className="text-emerald-400" />
+                    <span className="text-xs text-slate-500">Скільки підписників у тебе?</span>
+                    <span className="ml-auto text-sm font-medium text-emerald-400">{followers.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</span>
+                  </div>
+                  <CustomSlider
+                    value={followers}
+                    onChange={setFollowers}
+                    min={1000}
+                    max={100000}
+                    step={1000}
+                    disabled={false}
+                  />
+                  <div className="flex justify-between mt-2">
+                    <span className="text-[10px] text-slate-600">1k</span>
+                    <span className="text-[10px] text-slate-600">100k</span>
+                  </div>
+                </div>
+
+                {/* Messages */}
+                <div>
+                  <div className="flex items-center gap-2 mb-3">
+                    <ChatCircle size={16} weight="light" className="text-emerald-400" />
+                    <span className="text-xs text-slate-500">Скільки повідомлень отримуєш на місяць?</span>
+                    <span className="ml-auto text-sm font-medium text-emerald-400">{messages}</span>
+                  </div>
+                  <CustomSlider
+                    value={messages}
+                    onChange={setMessages}
+                    min={10}
+                    max={500}
+                    step={10}
+                    disabled={false}
+                  />
+                  <div className="flex justify-between mt-2">
+                    <span className="text-[10px] text-slate-600">10</span>
+                    <span className="text-[10px] text-slate-600">500</span>
+                  </div>
+                </div>
+
+                {/* Niche Selection */}
+                <div>
+                  <div className="flex items-center gap-2 mb-3">
+                    <Target size={16} weight="light" className="text-emerald-400" />
+                    <span className="text-xs text-slate-500">Яка твоя ніша?</span>
+                  </div>
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+                    {(["coaching", "fitness", "education", "other"] as Niche[]).map((n) => (
+                      <button
+                        key={n}
+                        onClick={() => setNiche(n)}
+                        className={`px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 ${
+                          niche === n
+                            ? "bg-emerald-500 text-white"
+                            : "bg-slate-700 text-slate-300 hover:bg-slate-600"
+                        }`}
+                      >
+                        {nicheLabels[n]}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Desired Income */}
+                <div>
+                  <div className="flex items-center gap-2 mb-3">
+                    <Wallet size={16} weight="light" className="text-emerald-400" />
+                    <span className="text-xs text-slate-500">Бажаний дохід на місяць?</span>
+                    <span className="ml-auto text-sm font-medium text-emerald-400">${desiredIncome.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</span>
+                  </div>
+                  <CustomSlider
+                    value={desiredIncome}
+                    onChange={setDesiredIncome}
+                    min={500}
+                    max={10000}
+                    step={100}
+                    disabled={false}
+                  />
+                  <div className="flex justify-between mt-2">
+                    <span className="text-[10px] text-slate-600">$500</span>
+                    <span className="text-[10px] text-slate-600">$10,000</span>
+                  </div>
+                </div>
+
+                {/* Apply Button */}
+                <button
+                  onClick={applyRecommendations}
+                  className="w-full py-4 rounded-full bg-emerald-500 hover:bg-emerald-400 text-white font-medium transition-all duration-300 flex items-center justify-center gap-2"
+                >
+                  <Lightbulb size={18} weight="fill" />
+                  Показати рекомендацію
+                </button>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* Manual Mode Content */}
+        {(mode === "manual" || helperApplied) && (
+          <>
         {/* Step 1: Package Selection */}
         <div className="mb-10">
           <p className="text-xs text-slate-500 uppercase tracking-widest mb-4">Крок 1 — Вибір пакету</p>
@@ -426,6 +641,8 @@ export function ROICalculator({ onBookClick }: { onBookClick?: () => void }) {
             )}
           </AnimatePresence>
         </div>
+        </>
+        )}
       </div>
     </section>
   );
