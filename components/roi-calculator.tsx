@@ -22,20 +22,24 @@ import {
 type Package = 1 | 2;
 type CalcMode = "manual" | "helper";
 
-type Niche = "coaching" | "fitness" | "education" | "other";
+type Niche = "coaching" | "fitness" | "education" | "beauty" | "handmade" | "consulting" | "other";
 
 const nicheLabels: Record<Niche, string> = {
   coaching: "Коучинг",
   fitness: "Фітнес",
   education: "Освіта",
+  beauty: "Б'юті",
+  handmade: "Хендмейд",
+  consulting: "Консалтинг",
   other: "Інше",
 };
 
 // Real industry data from Instagram DM & Telegram funnel research (2025-2026)
 // Sources:
 // - Instagram DM: 90% open rate, 50-60% reply rate, 15-20% DM-to-sale (LeadResponse, Unkoa, ManyChat)
-// - Telegram funnel: ~10% conversion after optimization (Medium case study)
-// - ManyChat automation: 15-20% conversion for targeted campaigns (LeadResponse 2026)
+// - Beauty: 1-1.3% conversion, 76% find via social, 61% book via Instagram (Napolify, Instavipbio)
+// - Handmade: 3.8% median Etsy, 6.2% personalized items (Alibaba 2026)
+// - Consulting: 14.6% LinkedIn inbound leads, 6.1% ads (ConnectSafely 2026)
 const nicheData: Record<Niche, { 
   conversionRate: number; 
   suggestedPrice: number;
@@ -44,7 +48,7 @@ const nicheData: Record<Niche, {
   insight: string;
 }> = {
   coaching: { 
-    conversionRate: 0.15, // 15% - Instagram DM targeted campaigns (LeadResponse)
+    conversionRate: 0.15, // 15% - Instagram DM targeted campaigns
     suggestedPrice: 297, 
     priceRange: { min: 147, max: 597 },
     source: "LeadResponse 2026, ManyChat Statistics",
@@ -64,8 +68,29 @@ const nicheData: Record<Niche, {
     source: "Creatorflow Case Studies 2026",
     insight: "Освітні продукти: 12% конверсія через Instagram + Telegram воронку з прогрівом."
   },
+  beauty: { 
+    conversionRate: 0.13, // 1.3% follower-to-buyer, but DM leads are warmer ~13%
+    suggestedPrice: 67, 
+    priceRange: { min: 27, max: 197 },
+    source: "Napolify 2025, Instavipbio Beauty Report",
+    insight: "76% клієнтів знаходять б'юті-майстрів через соцмережі. Instagram = основне портфоліо. 61% бронюють через Instagram."
+  },
+  handmade: { 
+    conversionRate: 0.08, // 3.8% Etsy median, Instagram DM ~8% with warm traffic
+    suggestedPrice: 47, 
+    priceRange: { min: 17, max: 147 },
+    source: "Alibaba/Etsy Statistics 2026",
+    insight: "Персоналізовані товари: до 6.2% конверсія. Instagram + Telegram для прийому замовлень підвищує довіру."
+  },
+  consulting: { 
+    conversionRate: 0.14, // 14.6% LinkedIn inbound leads
+    suggestedPrice: 397, 
+    priceRange: { min: 197, max: 997 },
+    source: "ConnectSafely 2026, LinkedIn B2B Report",
+    insight: "LinkedIn генерує 80% B2B лідів. Конверсія inbound лідів: 14.6%. Ніша-контент дає 15-22% залучення."
+  },
   other: { 
-    conversionRate: 0.10, // 10% - Telegram bot case study (Medium)
+    conversionRate: 0.10, // 10% - Telegram bot case study
     suggestedPrice: 97, 
     priceRange: { min: 47, max: 247 },
     source: "Medium Case Study, Magnetto Telegram Funnels",
@@ -425,8 +450,8 @@ export function ROICalculator({ onBookClick }: { onBookClick?: () => void }) {
                     <Target size={16} weight="light" className="text-emerald-400" />
                     <span className="text-xs text-slate-500">Яка твоя ніша?</span>
                   </div>
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
-                    {(["coaching", "fitness", "education", "other"] as Niche[]).map((n) => (
+<div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
+  {(["coaching", "fitness", "education", "beauty", "handmade", "consulting", "other"] as Niche[]).map((n) => (
                       <button
                         key={n}
                         onClick={() => setNiche(n)}
