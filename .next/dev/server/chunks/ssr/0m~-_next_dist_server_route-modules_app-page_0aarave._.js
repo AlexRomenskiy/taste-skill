@@ -5,17 +5,16 @@ module.exports = [
 if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
 ;
 else {
-    if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
-    ;
-    else {
+    if ("TURBOPACK compile-time truthy", 1) {
         if ("TURBOPACK compile-time truthy", 1) {
             if ("TURBOPACK compile-time truthy", 1) {
-                module.exports = __turbopack_context__.r("[externals]/next/dist/compiled/next-server/app-page-turbo.runtime.dev.js [external] (next/dist/compiled/next-server/app-page-turbo.runtime.dev.js, cjs)");
+                module.exports = __turbopack_context__.r("[externals]/next/dist/compiled/next-server/app-page-turbo-experimental.runtime.dev.js [external] (next/dist/compiled/next-server/app-page-turbo-experimental.runtime.dev.js, cjs)");
             } else //TURBOPACK unreachable
             ;
         } else //TURBOPACK unreachable
         ;
-    }
+    } else //TURBOPACK unreachable
+    ;
 }
 }),
 "[project]/node_modules/.pnpm/next@16.2.1_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/route-modules/app-page/vendored/rsc/react-server-dom-turbopack-server.js [app-rsc] (ecmascript)", ((__turbopack_context__, module, exports) => {

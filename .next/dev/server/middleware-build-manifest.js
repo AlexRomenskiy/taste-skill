@@ -12,15 +12,17 @@ globalThis.__BUILD_MANIFEST = {
     "static/development/_clientMiddlewareManifest.js"
   ],
   "rootMainFiles": [
-    "static/chunks/[turbopack]_browser_dev_hmr-client_hmr-client_ts_0y1jh4z._.js",
+    "static/chunks/[turbopack]_browser_dev_hmr-client_hmr-client_ts_0iozovm._.js",
     "static/chunks/0m~-_next_dist_compiled_next-devtools_index_0m3z~vf.js",
-    "static/chunks/0m~-_next_dist_compiled_react-dom_0jflhpm._.js",
-    "static/chunks/0m~-_next_dist_compiled_react-server-dom-turbopack_03luhqw._.js",
-    "static/chunks/0m~-_next_dist_compiled_0bneya7._.js",
+    "static/chunks/03y__dist_compiled_react-dom-experimental_cjs_react-dom-client_development_0.0llgg.js",
+    "static/chunks/0m~-_next_dist_compiled_react-dom-experimental_cjs_react-dom_development_0rd.d-8.js",
+    "static/chunks/0m~-_next_dist_compiled_react-dom-experimental_0wyk_.u._.js",
+    "static/chunks/0m~-_next_dist_compiled_react-server-dom-turbopack-experimental_0-9qq1n._.js",
+    "static/chunks/0m~-_next_dist_compiled_06v86m9._.js",
     "static/chunks/0m~-_next_dist_client_0hf680_._.js",
     "static/chunks/0m~-_next_dist_0adwku7._.js",
     "static/chunks/0i4a_@swc_helpers_cjs_0hvz.20._.js",
     "static/chunks/_0rqeker._.js",
-    "static/chunks/turbopack-_0.66ua4._.js"
+    "static/chunks/turbopack-_0nzmum1._.js"
   ]
 };

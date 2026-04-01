@@ -1,11 +1,9 @@
-{"timestamp":"00:00:01.617","source":"Server","level":"LOG","message":""}
-{"timestamp":"00:00:01.617","source":"Server","level":"LOG","message":"  We detected TypeScript in your project and reconfigured your tsconfig.json file for you."}
-{"timestamp":"00:00:01.617","source":"Server","level":"LOG","message":"  The following suggested values were added to your tsconfig.json. These values can be changed to fit your project's needs:\n"}
-{"timestamp":"00:00:01.618","source":"Server","level":"LOG","message":"  \t- include was updated to add '.next/dev/types/**/*.ts'"}
-{"timestamp":"00:00:01.618","source":"Server","level":"LOG","message":""}
-{"timestamp":"00:00:01.618","source":"Server","level":"LOG","message":"  The following mandatory changes were made to your tsconfig.json:\n"}
-{"timestamp":"00:00:01.618","source":"Server","level":"LOG","message":"  \t- jsx was set to react-jsx (next.js uses the React automatic runtime)"}
-{"timestamp":"00:00:01.618","source":"Server","level":"LOG","message":""}
-{"timestamp":"00:00:01.844","source":"Server","level":"LOG","message":""}
-{"timestamp":"00:00:04.871","source":"Server","level":"LOG","message":"○ Compiling / ..."}
-{"timestamp":"00:00:06.387","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
+{"timestamp":"00:00:00.692","source":"Server","level":"LOG","message":"- Experiments (use with caution):"}
+{"timestamp":"00:00:00.692","source":"Server","level":"LOG","message":"  · serverActions"}
+{"timestamp":"00:00:00.692","source":"Server","level":"LOG","message":"  ✓ transitionIndicator"}
+{"timestamp":"00:00:00.692","source":"Server","level":"LOG","message":""}
+{"timestamp":"00:06:15.542","source":"Server","level":"LOG","message":"✓ Compiled in 44ms"}
+{"timestamp":"00:06:34.713","source":"Server","level":"LOG","message":"✓ Compiled in 34ms"}
+{"timestamp":"00:06:41.075","source":"Server","level":"LOG","message":"✓ Compiled in 23ms"}
+{"timestamp":"00:06:55.082","source":"Server","level":"LOG","message":"✓ Compiled in 37ms"}
+{"timestamp":"00:07:18.865","source":"Server","level":"LOG","message":"  Reload env: .env.development.local"}
