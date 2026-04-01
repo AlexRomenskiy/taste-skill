@@ -39,3 +39,13 @@
 {"timestamp":"00:26:42.240","source":"Server","level":"LOG","message":"✓ Compiled in 27ms"}
 {"timestamp":"00:26:49.266","source":"Server","level":"LOG","message":"  Reload env: .env.development.local"}
 {"timestamp":"00:26:49.474","source":"Browser","level":"ERROR","message":"Can't perform a React state update on a component that hasn't mounted yet. This indicates that you have a side-effect in your render function that asynchronously tries to update the component. Move this work to useEffect instead."}
+{"timestamp":"00:26:52.322","source":"Server","level":"ERROR","message":"[browser] \"Can't perform a React state update on a component that hasn't mounted yet. This indicates that you have a side-effect in your render function that asynchronously tries to update the component. Move this work to useEffect instead.\" \"\""}
+{"timestamp":"00:26:52.322","source":"Browser","level":"ERROR","message":"Can't perform a React state update on a component that hasn't mounted yet. This indicates that you have a side-effect in your render function that asynchronously tries to update the component. Move this work to useEffect instead. \"\""}
+{"timestamp":"00:35:14.393","source":"Server","level":"LOG","message":"✓ Compiled in 48ms"}
+{"timestamp":"00:35:20.776","source":"Server","level":"LOG","message":"✓ Compiled in 38ms"}
+{"timestamp":"00:35:42.727","source":"Server","level":"LOG","message":"✓ Compiled in 36ms"}
+{"timestamp":"00:35:49.468","source":"Server","level":"LOG","message":"✓ Compiled in 33ms"}
+{"timestamp":"00:36:03.414","source":"Server","level":"LOG","message":"✓ Compiled in 63ms"}
+{"timestamp":"00:36:19.566","source":"Server","level":"LOG","message":"✓ Compiled in 50ms"}
+{"timestamp":"00:37:02.849","source":"Server","level":"LOG","message":"✓ Compiled in 36ms"}
+{"timestamp":"00:37:09.330","source":"Server","level":"LOG","message":"  Reload env: .env.development.local"}

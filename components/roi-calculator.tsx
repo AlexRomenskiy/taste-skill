@@ -238,6 +238,7 @@ function CustomSlider({
 }
 
 export function ROICalculator({ onBookClick }: { onBookClick?: () => void }) {
+  const calculatorRef = useRef<HTMLDivElement>(null);
   const [mode, setMode] = useState<CalcMode>("manual");
   const [selectedPackage, setSelectedPackage] = useState<Package>(1);
   const [products, setProducts] = useState<Product[]>([{ id: 1, price: 100, sales: 3 }]);
@@ -258,15 +259,22 @@ export function ROICalculator({ onBookClick }: { onBookClick?: () => void }) {
     insight: string;
     conversionRate: number;
     expectedIncome: number;
-    gap: number; // difference between desired and achievable
-    neededMessages: number; // how many messages needed to reach goal
-    suggestion: string; // actionable advice
+    gap: number;
+    neededMessages: number;
+    suggestion: string;
+    engagementRate: number;
+    growthTip: string;
   } | null>(null);
 
   // Calculate recommendations based on Instagram DM & Telegram funnel statistics
   const calculateRecommendations = () => {
     const nicheInfo = nicheData[niche];
     const { conversionRate, suggestedPrice, priceRange } = nicheInfo;
+    
+    // Calculate engagement rate (messages/followers)
+    // Good engagement rate: 0.5-2% for Instagram DMs from followers
+    const currentEngagementRate = (messages / followers) * 100;
+    const benchmarkEngagementRate = 1.0; // 1% is average for active accounts
     
     // Instagram DM: 90% open rate, 50-60% reply rate (ManyChat/Unkoa stats)
     // From messages that come in, ~70% are warm leads ready for funnel
@@ -285,6 +293,7 @@ export function ROICalculator({ onBookClick }: { onBookClick?: () => void }) {
     let recommendedPrice: number;
     let suggestion: string;
     let neededMessages: number;
+    let growthTip: string = "";
     
     if (priceToHitGoal <= maxReasonablePrice) {
       // Goal achievable with current traffic
@@ -297,7 +306,20 @@ export function ROICalculator({ onBookClick }: { onBookClick?: () => void }) {
       // Calculate how many messages needed to hit goal at max price
       const salesNeeded = Math.ceil(desiredIncome / maxReasonablePrice);
       neededMessages = Math.ceil(salesNeeded / conversionRate / 0.7);
-      suggestion = `Для $${desiredIncome.toLocaleString()}/міс потрібно ~${neededMessages} повідомлень. Зараз з ${messages} повідомлень досяжно ~$${maxAchievableIncome.toLocaleString()}/міс.`;
+      
+      // Calculate followers needed OR engagement improvement needed
+      const followersNeededAtCurrentEngagement = Math.ceil(neededMessages / (currentEngagementRate / 100));
+      const followersNeededAtBenchmark = Math.ceil(neededMessages / (benchmarkEngagementRate / 100));
+      
+      if (currentEngagementRate < benchmarkEngagementRate) {
+        // Low engagement - suggest improving it
+        growthTip = `Твій engagement rate: ${currentEngagementRate.toFixed(2)}% (середній: 1%). Покращ залученість через Reels/Stories — і з ${followers.toLocaleString()} підписників отримаєш ${Math.round(followers * benchmarkEngagementRate / 100)} повідомлень.`;
+      } else {
+        // Good engagement - need more followers
+        growthTip = `Твій engagement ${currentEngagementRate.toFixed(2)}% — це добре! Для ${neededMessages} повідомлень потрібно ~${followersNeededAtCurrentEngagement.toLocaleString()} підписників.`;
+      }
+      
+      suggestion = `Для $${desiredIncome.toLocaleString()}/міс потрібно ~${neededMessages} повідомлень. Зараз досяжно ~$${maxAchievableIncome.toLocaleString()}/міс.`;
     }
     
     const actualExpectedIncome = expectedSales * recommendedPrice;
@@ -317,6 +339,8 @@ export function ROICalculator({ onBookClick }: { onBookClick?: () => void }) {
       gap: Math.max(0, gap),
       neededMessages,
       suggestion,
+      engagementRate: currentEngagementRate,
+      growthTip,
     };
   };
 
@@ -333,6 +357,10 @@ export function ROICalculator({ onBookClick }: { onBookClick?: () => void }) {
     setHelperApplied(true);
     setShowRecommendation(false);
     setMode("manual");
+    // Smooth scroll to calculator after state updates
+    setTimeout(() => {
+      calculatorRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 100);
   };
 
   const addProduct = () => {
@@ -371,7 +399,7 @@ export function ROICalculator({ onBookClick }: { onBookClick?: () => void }) {
   const yearlyIncome = netProfit * 12;
 
   return (
-    <section className="py-20 bg-slate-900">
+    <section ref={calculatorRef} className="py-20 bg-slate-900 scroll-mt-4">
       <div className="container mx-auto px-4 max-w-4xl">
         {/* Header */}
         <div className="text-center mb-8">
@@ -547,7 +575,7 @@ export function ROICalculator({ onBookClick }: { onBookClick?: () => void }) {
 
                       {/* Suggestion block - actionable advice */}
                       {recommendation.suggestion && (
-                        <div className={`p-4 rounded-xl mb-6 ${(recommendation.gap ?? 0) > 0 ? 'bg-amber-500/10 border border-amber-500/30' : 'bg-emerald-500/10 border border-emerald-500/30'}`}>
+                        <div className={`p-4 rounded-xl mb-4 ${(recommendation.gap ?? 0) > 0 ? 'bg-amber-500/10 border border-amber-500/30' : 'bg-emerald-500/10 border border-emerald-500/30'}`}>
                           <p className={`text-sm ${(recommendation.gap ?? 0) > 0 ? 'text-amber-300' : 'text-emerald-300'}`}>
                             {recommendation.suggestion}
                           </p>
@@ -556,6 +584,14 @@ export function ROICalculator({ onBookClick }: { onBookClick?: () => void }) {
                               Рекомендуємо Пакет 2 з двома продуктами для досягнення цілі.
                             </p>
                           )}
+                        </div>
+                      )}
+
+                      {/* Growth tip - how to increase traffic based on followers */}
+                      {recommendation.growthTip && (recommendation.gap ?? 0) > 0 && (
+                        <div className="p-4 rounded-xl mb-6 bg-blue-500/10 border border-blue-500/30">
+                          <p className="text-xs text-blue-400 font-medium mb-1">Як збільшити трафік?</p>
+                          <p className="text-sm text-blue-300">{recommendation.growthTip}</p>
                         </div>
                       )}
 
@@ -577,19 +613,19 @@ export function ROICalculator({ onBookClick }: { onBookClick?: () => void }) {
                       <div className="grid grid-cols-2 gap-4 mb-6">
                         <div className="p-4 rounded-xl bg-slate-800/30">
                           <p className="text-xs text-slate-400 mb-2">Досяжний дохід/міс:</p>
-                          <p className={`text-2xl font-semibold ${(recommendation.gap ?? 0) > 0 ? 'text-amber-400' : 'text-emerald-400'}`}>
-                            ${(recommendation.expectedIncome ?? 0).toLocaleString()}
+                          <p className={`text-2xl font-semibold ${(recommendation?.gap ?? 0) > 0 ? 'text-amber-400' : 'text-emerald-400'}`}>
+                            ${(recommendation?.expectedIncome ?? 0).toLocaleString()}
                           </p>
-                          {(recommendation.gap ?? 0) > 0 && (
+                          {(recommendation?.gap ?? 0) > 0 && (
                             <p className="text-xs text-amber-400/70 mt-1">
-                              −${(recommendation.gap ?? 0).toLocaleString()} від цілі
+                              −${(recommendation?.gap ?? 0).toLocaleString()} від цілі
                             </p>
                           )}
                         </div>
                         <div className="p-4 rounded-xl bg-slate-800/30">
                           <p className="text-xs text-slate-400 mb-2">Конверсія ({nicheLabels[niche]}):</p>
                           <p className="text-2xl font-semibold text-white">
-                            {recommendation.conversionRate}%
+                            {recommendation?.conversionRate ?? 0}%
                           </p>
                         </div>
                       </div>
