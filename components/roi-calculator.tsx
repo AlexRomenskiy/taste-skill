@@ -50,10 +50,19 @@ const packageData = {
 };
 
 function AnimatedNumber({ value, prefix = "", suffix = "" }: { value: number; prefix?: string; suffix?: string }) {
-  const [displayValue, setDisplayValue] = useState(value);
-  const previousValue = useRef(value);
+  const [displayValue, setDisplayValue] = useState(0);
+  const [mounted, setMounted] = useState(false);
+  const previousValue = useRef(0);
 
   useEffect(() => {
+    setMounted(true);
+    setDisplayValue(value);
+    previousValue.current = value;
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
+    
     const start = previousValue.current;
     const end = value;
     const duration = 400;
@@ -74,9 +83,15 @@ function AnimatedNumber({ value, prefix = "", suffix = "" }: { value: number; pr
     };
 
     requestAnimationFrame(animate);
-  }, [value]);
+  }, [value, mounted]);
 
   const formatted = displayValue.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  
+  // Prevent hydration mismatch by showing 0 on server
+  if (!mounted) {
+    return <span>{prefix}0{suffix}</span>;
+  }
+  
   return <span>{prefix}{formatted}{suffix}</span>;
 }
 
