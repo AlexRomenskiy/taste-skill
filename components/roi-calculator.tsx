@@ -1,5 +1,6 @@
 "use client";
 
+// v2 - fixed hydration
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -189,6 +190,8 @@ export function ROICalculator({ onBookClick }: { onBookClick?: () => void }) {
   const [niche, setNiche] = useState<Niche>("coaching");
   const [desiredIncome, setDesiredIncome] = useState(2000);
   const [helperApplied, setHelperApplied] = useState(false);
+  const [showRecommendation, setShowRecommendation] = useState(false);
+  const [recommendation, setRecommendation] = useState<{ price: number; sales: number; package: Package } | null>(null);
 
   // Calculate recommendations based on helper inputs
   const calculateRecommendations = () => {
@@ -220,11 +223,18 @@ export function ROICalculator({ onBookClick }: { onBookClick?: () => void }) {
     };
   };
 
-  const applyRecommendations = () => {
+  const showRecommendations = () => {
     const rec = calculateRecommendations();
-    setSelectedPackage(rec.package);
-    setProducts([{ id: 1, price: rec.price, sales: rec.sales }]);
+    setRecommendation(rec);
+    setShowRecommendation(true);
+  };
+
+  const applyRecommendations = () => {
+    if (!recommendation) return;
+    setSelectedPackage(recommendation.package);
+    setProducts([{ id: 1, price: recommendation.price, sales: recommendation.sales }]);
     setHelperApplied(true);
+    setShowRecommendation(false);
     setMode("manual");
   };
 
@@ -290,7 +300,7 @@ export function ROICalculator({ onBookClick }: { onBookClick?: () => void }) {
               Знаю свої дані
             </button>
             <button
-              onClick={() => { setMode("helper"); setHelperApplied(false); }}
+              onClick={() => { setMode("helper"); setHelperApplied(false); setShowRecommendation(false); }}
               className={`px-5 py-2.5 text-sm font-medium rounded-full transition-all duration-300 flex items-center gap-2 ${
                 mode === "helper"
                   ? "bg-emerald-500 text-white shadow-sm"
@@ -405,14 +415,72 @@ export function ROICalculator({ onBookClick }: { onBookClick?: () => void }) {
                   </div>
                 </div>
 
-                {/* Apply Button */}
-                <button
-                  onClick={applyRecommendations}
-                  className="w-full py-4 rounded-full bg-emerald-500 hover:bg-emerald-400 text-white font-medium transition-all duration-300 flex items-center justify-center gap-2"
-                >
-                  <Lightbulb size={18} weight="fill" />
-                  Показати рекомендацію
-                </button>
+                {/* Show Recommendations Button */}
+                {!showRecommendation && (
+                  <button
+                    onClick={showRecommendations}
+                    className="w-full py-4 rounded-full bg-emerald-500 hover:bg-emerald-400 text-white font-medium transition-all duration-300 flex items-center justify-center gap-2"
+                  >
+                    <Lightbulb size={18} weight="fill" />
+                    Показати рекомендацію
+                  </button>
+                )}
+
+                {/* Recommendation Result Card */}
+                <AnimatePresence>
+                  {showRecommendation && recommendation && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 20, scale: 0.95 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.4, ease: "easeOut" }}
+                      className="mt-6 p-6 rounded-2xl bg-emerald-500/10 border border-emerald-500/30"
+                    >
+                      <div className="flex items-center gap-2 mb-4">
+                        <CheckCircle size={20} weight="fill" className="text-emerald-400" />
+                        <span className="text-sm font-medium text-emerald-400">Наша рекомендація для тебе</span>
+                      </div>
+
+                      <div className="grid grid-cols-3 gap-4 mb-6">
+                        <div className="text-center p-4 rounded-xl bg-slate-800/50">
+                          <p className="text-2xl font-semibold text-white">${recommendation.price}</p>
+                          <p className="text-xs text-slate-400 mt-1">Ціна продукту</p>
+                        </div>
+                        <div className="text-center p-4 rounded-xl bg-slate-800/50">
+                          <p className="text-2xl font-semibold text-white">{recommendation.sales}</p>
+                          <p className="text-xs text-slate-400 mt-1">Продажів/міс</p>
+                        </div>
+                        <div className="text-center p-4 rounded-xl bg-slate-800/50">
+                          <p className="text-2xl font-semibold text-white">Пакет {recommendation.package}</p>
+                          <p className="text-xs text-slate-400 mt-1">{packageData[recommendation.package].name}</p>
+                        </div>
+                      </div>
+
+                      <div className="p-4 rounded-xl bg-slate-800/30 mb-6">
+                        <p className="text-xs text-slate-400 mb-2">Очікуваний дохід на місяць:</p>
+                        <p className="text-3xl font-semibold text-emerald-400">
+                          ${(recommendation.price * recommendation.sales).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                        </p>
+                      </div>
+
+                      <div className="flex gap-3">
+                        <button
+                          onClick={() => setShowRecommendation(false)}
+                          className="flex-1 py-3 rounded-full bg-slate-700 hover:bg-slate-600 text-white font-medium transition-all duration-300"
+                        >
+                          Змінити дані
+                        </button>
+                        <button
+                          onClick={applyRecommendations}
+                          className="flex-1 py-3 rounded-full bg-emerald-500 hover:bg-emerald-400 text-white font-medium transition-all duration-300 flex items-center justify-center gap-2"
+                        >
+                          <ChartLineUp size={18} weight="bold" />
+                          Розрахувати детально
+                        </button>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
             </motion.div>
           )}
