@@ -7,3 +7,7 @@
 {"timestamp":"00:06:41.075","source":"Server","level":"LOG","message":"✓ Compiled in 23ms"}
 {"timestamp":"00:06:55.082","source":"Server","level":"LOG","message":"✓ Compiled in 37ms"}
 {"timestamp":"00:07:18.865","source":"Server","level":"LOG","message":"  Reload env: .env.development.local"}
+{"timestamp":"00:12:38.388","source":"Server","level":"LOG","message":"✓ Compiled in 30ms"}
+{"timestamp":"00:12:55.898","source":"Server","level":"LOG","message":"✓ Compiled in 32ms"}
+{"timestamp":"00:13:01.741","source":"Server","level":"LOG","message":"✓ Compiled in 28ms"}
+{"timestamp":"00:13:27.238","source":"Server","level":"LOG","message":"  Reload env: .env.development.local"}

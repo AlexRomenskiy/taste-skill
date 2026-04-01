@@ -3378,52 +3378,51 @@ const nicheLabels = {
     education: "Освіта",
     other: "Інше"
 };
-// Real industry data from research (DollarPocket 2025, EarnifyHub 2026)
+// Real industry data from Instagram DM & Telegram funnel research (2025-2026)
 // Sources:
-// - Instagram DM conversion: 7-20% for targeted campaigns (jawab24.com, leadresponse.co)
-// - Email list conversion: 1.8-3.5% average (EarnifyHub 2026)
-// - Course pricing: $97-$497 mid-range sweet spot (DollarPocket 132K courses study)
-// - Fitness marketing: 25-40% conversion with automation (Outgrow)
+// - Instagram DM: 90% open rate, 50-60% reply rate, 15-20% DM-to-sale (LeadResponse, Unkoa, ManyChat)
+// - Telegram funnel: ~10% conversion after optimization (Medium case study)
+// - ManyChat automation: 15-20% conversion for targeted campaigns (LeadResponse 2026)
 const nicheData = {
     coaching: {
-        conversionRate: 0.021,
+        conversionRate: 0.15,
         suggestedPrice: 297,
         priceRange: {
-            min: 197,
+            min: 147,
             max: 597
         },
-        source: "DollarPocket 2025 (132K курсів)",
-        insight: "Середня конверсія email-списку: 2.1%. Оптимальна ціна $297-$497."
+        source: "LeadResponse 2026, ManyChat Statistics",
+        insight: "Instagram DM: 90% open rate, 15-20% конверсія у продаж. Коучі з автоматизацією досягають 80% конверсії лідів."
     },
     fitness: {
-        conversionRate: 0.028,
-        suggestedPrice: 147,
+        conversionRate: 0.18,
+        suggestedPrice: 97,
         priceRange: {
             min: 47,
-            max: 297
+            max: 247
         },
-        source: "Outgrow Fitness Marketing 2025",
-        insight: "Фітнес має вищу конверсію (2.8%) завдяки візуальним результатам."
+        source: "Unkoa Instagram DM Report 2025",
+        insight: "Фітнес-ніша: 50-60% reply rate в DM. Візуальні результати підвищують конверсію до 18%."
     },
     education: {
-        conversionRate: 0.018,
-        suggestedPrice: 197,
-        priceRange: {
-            min: 97,
-            max: 497
-        },
-        source: "Unbounce Education Report 2026",
-        insight: "Освітні курси: 14.1% конверсія email, 1.8% у продаж."
-    },
-    other: {
-        conversionRate: 0.015,
+        conversionRate: 0.12,
         suggestedPrice: 147,
         priceRange: {
             min: 67,
-            max: 297
+            max: 397
         },
-        source: "EarnifyHub 2026 (50 креаторів)",
-        insight: "Середній показник для нових ніш: 1.5% конверсії."
+        source: "Creatorflow Case Studies 2026",
+        insight: "Освітні продукти: 12% конверсія через Instagram + Telegram воронку з прогрівом."
+    },
+    other: {
+        conversionRate: 0.10,
+        suggestedPrice: 97,
+        priceRange: {
+            min: 47,
+            max: 247
+        },
+        source: "Medium Case Study, Magnetto Telegram Funnels",
+        insight: "Telegram воронки: 10% конверсія після оптимізації. Користувачі проводять 41+ хв/день в Telegram."
     }
 };
 const packageData = {
@@ -3479,7 +3478,7 @@ function AnimatedNumber({ value, prefix = "", suffix = "" }) {
         ]
     }, void 0, true, {
         fileName: "[project]/components/roi-calculator.tsx",
-        lineNumber: 125,
+        lineNumber: 124,
         columnNumber: 10
     }, this);
 }
@@ -3532,7 +3531,7 @@ function CustomSlider({ value, onChange, min, max, step, disabled }) {
                 className: "absolute inset-x-0 h-2 bg-slate-700 rounded-full"
             }, void 0, false, {
                 fileName: "[project]/components/roi-calculator.tsx",
-                lineNumber: 199,
+                lineNumber: 198,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3542,7 +3541,7 @@ function CustomSlider({ value, onChange, min, max, step, disabled }) {
                 }
             }, void 0, false, {
                 fileName: "[project]/components/roi-calculator.tsx",
-                lineNumber: 201,
+                lineNumber: 200,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3552,13 +3551,13 @@ function CustomSlider({ value, onChange, min, max, step, disabled }) {
                 }
             }, void 0, false, {
                 fileName: "[project]/components/roi-calculator.tsx",
-                lineNumber: 206,
+                lineNumber: 205,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/components/roi-calculator.tsx",
-        lineNumber: 192,
+        lineNumber: 191,
         columnNumber: 5
     }, this);
 }
@@ -3581,19 +3580,16 @@ function ROICalculator({ onBookClick }) {
     const [helperApplied, setHelperApplied] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
     const [showRecommendation, setShowRecommendation] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
     const [recommendation, setRecommendation] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
-    // Calculate recommendations based on helper inputs using real industry data
+    // Calculate recommendations based on Instagram DM & Telegram funnel statistics
     const calculateRecommendations = ()=>{
         const nicheInfo = nicheData[niche];
         const { conversionRate, suggestedPrice, priceRange } = nicheInfo;
-        // Instagram DM stats: 7-20% of DMs are warm leads (jawab24.com)
-        // Conservative estimate: 50% of messages are potential leads
-        const potentialLeads = Math.round(messages * 0.5);
-        // Apply niche-specific conversion rate (based on EarnifyHub/DollarPocket research)
-        // Automation increases conversion by ~40% (Outgrow fitness study)
-        const automationBoost = 1.4;
-        const effectiveConversionRate = conversionRate * automationBoost;
-        // Calculate expected monthly sales
-        const expectedSales = Math.max(1, Math.round(potentialLeads * effectiveConversionRate));
+        // Instagram DM: 90% open rate, 50-60% reply rate (ManyChat/Unkoa stats)
+        // From messages that come in, ~70% are warm leads ready for funnel
+        const warmLeads = Math.round(messages * 0.7);
+        // Apply niche-specific conversion rate (already includes automation boost from research)
+        // These rates are from real Instagram DM + Telegram funnel campaigns
+        const expectedSales = Math.max(1, Math.round(warmLeads * conversionRate));
         // Calculate recommended price based on desired income and realistic sales
         let recommendedPrice = suggestedPrice;
         if (desiredIncome > 0 && expectedSales > 0) {
@@ -3612,7 +3608,7 @@ function ROICalculator({ onBookClick }) {
             package: recommendedPackage,
             source: nicheInfo.source,
             insight: nicheInfo.insight,
-            conversionRate: Math.round(effectiveConversionRate * 1000) / 10
+            conversionRate: Math.round(conversionRate * 100)
         };
     };
     const showRecommendations = ()=>{
@@ -3689,7 +3685,7 @@ function ROICalculator({ onBookClick }) {
                             children: "Калькулятор окупності"
                         }, void 0, false, {
                             fileName: "[project]/components/roi-calculator.tsx",
-                            lineNumber: 334,
+                            lineNumber: 329,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3697,13 +3693,13 @@ function ROICalculator({ onBookClick }) {
                             children: "Дізнайся, як швидко окупиться твоя інвестиція"
                         }, void 0, false, {
                             fileName: "[project]/components/roi-calculator.tsx",
-                            lineNumber: 337,
+                            lineNumber: 332,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/roi-calculator.tsx",
-                    lineNumber: 333,
+                    lineNumber: 328,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3717,7 +3713,7 @@ function ROICalculator({ onBookClick }) {
                                 children: "Знаю свої дані"
                             }, void 0, false, {
                                 fileName: "[project]/components/roi-calculator.tsx",
-                                lineNumber: 345,
+                                lineNumber: 340,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -3733,25 +3729,25 @@ function ROICalculator({ onBookClick }) {
                                         weight: mode === "helper" ? "fill" : "regular"
                                     }, void 0, false, {
                                         fileName: "[project]/components/roi-calculator.tsx",
-                                        lineNumber: 363,
+                                        lineNumber: 358,
                                         columnNumber: 15
                                     }, this),
                                     "Допоможіть порахувати"
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/roi-calculator.tsx",
-                                lineNumber: 355,
+                                lineNumber: 350,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/roi-calculator.tsx",
-                        lineNumber: 344,
+                        lineNumber: 339,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/components/roi-calculator.tsx",
-                    lineNumber: 343,
+                    lineNumber: 338,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$framer$2d$motion$40$11$2e$18$2e$2_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$components$2f$AnimatePresence$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["AnimatePresence"], {
@@ -3781,7 +3777,7 @@ function ROICalculator({ onBookClick }) {
                                     children: "Відповідай ��а питання — ми підберемо оптимальні параметри"
                                 }, void 0, false, {
                                     fileName: "[project]/components/roi-calculator.tsx",
-                                    lineNumber: 381,
+                                    lineNumber: 376,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3795,7 +3791,7 @@ function ROICalculator({ onBookClick }) {
                                                     className: "text-emerald-400"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/roi-calculator.tsx",
-                                                    lineNumber: 388,
+                                                    lineNumber: 383,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -3803,7 +3799,7 @@ function ROICalculator({ onBookClick }) {
                                                     children: "Скільки підписників у тебе?"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/roi-calculator.tsx",
-                                                    lineNumber: 389,
+                                                    lineNumber: 384,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -3811,13 +3807,13 @@ function ROICalculator({ onBookClick }) {
                                                     children: followers.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/roi-calculator.tsx",
-                                                    lineNumber: 390,
+                                                    lineNumber: 385,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/roi-calculator.tsx",
-                                            lineNumber: 387,
+                                            lineNumber: 382,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(CustomSlider, {
@@ -3829,7 +3825,7 @@ function ROICalculator({ onBookClick }) {
                                             disabled: false
                                         }, void 0, false, {
                                             fileName: "[project]/components/roi-calculator.tsx",
-                                            lineNumber: 392,
+                                            lineNumber: 387,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3840,7 +3836,7 @@ function ROICalculator({ onBookClick }) {
                                                     children: "1k"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/roi-calculator.tsx",
-                                                    lineNumber: 401,
+                                                    lineNumber: 396,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -3848,19 +3844,19 @@ function ROICalculator({ onBookClick }) {
                                                     children: "100k"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/roi-calculator.tsx",
-                                                    lineNumber: 402,
+                                                    lineNumber: 397,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/roi-calculator.tsx",
-                                            lineNumber: 400,
+                                            lineNumber: 395,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/roi-calculator.tsx",
-                                    lineNumber: 386,
+                                    lineNumber: 381,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3874,7 +3870,7 @@ function ROICalculator({ onBookClick }) {
                                                     className: "text-emerald-400"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/roi-calculator.tsx",
-                                                    lineNumber: 409,
+                                                    lineNumber: 404,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -3882,7 +3878,7 @@ function ROICalculator({ onBookClick }) {
                                                     children: "Скільки повідомлень отримуєш на місяць?"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/roi-calculator.tsx",
-                                                    lineNumber: 410,
+                                                    lineNumber: 405,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -3890,13 +3886,13 @@ function ROICalculator({ onBookClick }) {
                                                     children: messages
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/roi-calculator.tsx",
-                                                    lineNumber: 411,
+                                                    lineNumber: 406,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/roi-calculator.tsx",
-                                            lineNumber: 408,
+                                            lineNumber: 403,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(CustomSlider, {
@@ -3908,7 +3904,7 @@ function ROICalculator({ onBookClick }) {
                                             disabled: false
                                         }, void 0, false, {
                                             fileName: "[project]/components/roi-calculator.tsx",
-                                            lineNumber: 413,
+                                            lineNumber: 408,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3919,7 +3915,7 @@ function ROICalculator({ onBookClick }) {
                                                     children: "10"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/roi-calculator.tsx",
-                                                    lineNumber: 422,
+                                                    lineNumber: 417,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -3927,19 +3923,19 @@ function ROICalculator({ onBookClick }) {
                                                     children: "500"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/roi-calculator.tsx",
-                                                    lineNumber: 423,
+                                                    lineNumber: 418,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/roi-calculator.tsx",
-                                            lineNumber: 421,
+                                            lineNumber: 416,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/roi-calculator.tsx",
-                                    lineNumber: 407,
+                                    lineNumber: 402,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3953,7 +3949,7 @@ function ROICalculator({ onBookClick }) {
                                                     className: "text-emerald-400"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/roi-calculator.tsx",
-                                                    lineNumber: 430,
+                                                    lineNumber: 425,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -3961,13 +3957,13 @@ function ROICalculator({ onBookClick }) {
                                                     children: "Яка твоя ніша?"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/roi-calculator.tsx",
-                                                    lineNumber: 431,
+                                                    lineNumber: 426,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/roi-calculator.tsx",
-                                            lineNumber: 429,
+                                            lineNumber: 424,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3983,18 +3979,18 @@ function ROICalculator({ onBookClick }) {
                                                     children: nicheLabels[n]
                                                 }, n, false, {
                                                     fileName: "[project]/components/roi-calculator.tsx",
-                                                    lineNumber: 435,
+                                                    lineNumber: 430,
                                                     columnNumber: 23
                                                 }, this))
                                         }, void 0, false, {
                                             fileName: "[project]/components/roi-calculator.tsx",
-                                            lineNumber: 433,
+                                            lineNumber: 428,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/roi-calculator.tsx",
-                                    lineNumber: 428,
+                                    lineNumber: 423,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4008,7 +4004,7 @@ function ROICalculator({ onBookClick }) {
                                                     className: "text-emerald-400"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/roi-calculator.tsx",
-                                                    lineNumber: 453,
+                                                    lineNumber: 448,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -4016,7 +4012,7 @@ function ROICalculator({ onBookClick }) {
                                                     children: "Бажаний дохід на місяць?"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/roi-calculator.tsx",
-                                                    lineNumber: 454,
+                                                    lineNumber: 449,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -4027,13 +4023,13 @@ function ROICalculator({ onBookClick }) {
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/roi-calculator.tsx",
-                                                    lineNumber: 455,
+                                                    lineNumber: 450,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/roi-calculator.tsx",
-                                            lineNumber: 452,
+                                            lineNumber: 447,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(CustomSlider, {
@@ -4045,7 +4041,7 @@ function ROICalculator({ onBookClick }) {
                                             disabled: false
                                         }, void 0, false, {
                                             fileName: "[project]/components/roi-calculator.tsx",
-                                            lineNumber: 457,
+                                            lineNumber: 452,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4056,7 +4052,7 @@ function ROICalculator({ onBookClick }) {
                                                     children: "$500"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/roi-calculator.tsx",
-                                                    lineNumber: 466,
+                                                    lineNumber: 461,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -4064,19 +4060,19 @@ function ROICalculator({ onBookClick }) {
                                                     children: "$10,000"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/roi-calculator.tsx",
-                                                    lineNumber: 467,
+                                                    lineNumber: 462,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/roi-calculator.tsx",
-                                            lineNumber: 465,
+                                            lineNumber: 460,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/roi-calculator.tsx",
-                                    lineNumber: 451,
+                                    lineNumber: 446,
                                     columnNumber: 17
                                 }, this),
                                 !showRecommendation && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -4088,14 +4084,14 @@ function ROICalculator({ onBookClick }) {
                                             weight: "fill"
                                         }, void 0, false, {
                                             fileName: "[project]/components/roi-calculator.tsx",
-                                            lineNumber: 477,
+                                            lineNumber: 472,
                                             columnNumber: 21
                                         }, this),
                                         "Показати рекомендацію"
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/roi-calculator.tsx",
-                                    lineNumber: 473,
+                                    lineNumber: 468,
                                     columnNumber: 19
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$framer$2d$motion$40$11$2e$18$2e$2_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$components$2f$AnimatePresence$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["AnimatePresence"], {
@@ -4129,7 +4125,7 @@ function ROICalculator({ onBookClick }) {
                                                         className: "text-emerald-400"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/roi-calculator.tsx",
-                                                        lineNumber: 493,
+                                                        lineNumber: 488,
                                                         columnNumber: 25
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -4137,13 +4133,13 @@ function ROICalculator({ onBookClick }) {
                                                         children: "Наша рекомендація для тебе"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/roi-calculator.tsx",
-                                                        lineNumber: 494,
+                                                        lineNumber: 489,
                                                         columnNumber: 25
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/roi-calculator.tsx",
-                                                lineNumber: 492,
+                                                lineNumber: 487,
                                                 columnNumber: 23
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4160,7 +4156,7 @@ function ROICalculator({ onBookClick }) {
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/components/roi-calculator.tsx",
-                                                                lineNumber: 499,
+                                                                lineNumber: 494,
                                                                 columnNumber: 27
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -4168,13 +4164,13 @@ function ROICalculator({ onBookClick }) {
                                                                 children: "Ціна продукту"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/roi-calculator.tsx",
-                                                                lineNumber: 500,
+                                                                lineNumber: 495,
                                                                 columnNumber: 27
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/roi-calculator.tsx",
-                                                        lineNumber: 498,
+                                                        lineNumber: 493,
                                                         columnNumber: 25
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4185,7 +4181,7 @@ function ROICalculator({ onBookClick }) {
                                                                 children: recommendation.sales
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/roi-calculator.tsx",
-                                                                lineNumber: 503,
+                                                                lineNumber: 498,
                                                                 columnNumber: 27
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -4193,13 +4189,13 @@ function ROICalculator({ onBookClick }) {
                                                                 children: "Продажів/міс"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/roi-calculator.tsx",
-                                                                lineNumber: 504,
+                                                                lineNumber: 499,
                                                                 columnNumber: 27
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/roi-calculator.tsx",
-                                                        lineNumber: 502,
+                                                        lineNumber: 497,
                                                         columnNumber: 25
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4213,7 +4209,7 @@ function ROICalculator({ onBookClick }) {
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/components/roi-calculator.tsx",
-                                                                lineNumber: 507,
+                                                                lineNumber: 502,
                                                                 columnNumber: 27
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -4221,19 +4217,19 @@ function ROICalculator({ onBookClick }) {
                                                                 children: packageData[recommendation.package].name
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/roi-calculator.tsx",
-                                                                lineNumber: 508,
+                                                                lineNumber: 503,
                                                                 columnNumber: 27
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/roi-calculator.tsx",
-                                                        lineNumber: 506,
+                                                        lineNumber: 501,
                                                         columnNumber: 25
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/roi-calculator.tsx",
-                                                lineNumber: 497,
+                                                lineNumber: 492,
                                                 columnNumber: 23
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4247,7 +4243,7 @@ function ROICalculator({ onBookClick }) {
                                                                 children: "Очікуваний дохід/міс:"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/roi-calculator.tsx",
-                                                                lineNumber: 514,
+                                                                lineNumber: 509,
                                                                 columnNumber: 27
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -4258,13 +4254,13 @@ function ROICalculator({ onBookClick }) {
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/components/roi-calculator.tsx",
-                                                                lineNumber: 515,
+                                                                lineNumber: 510,
                                                                 columnNumber: 27
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/roi-calculator.tsx",
-                                                        lineNumber: 513,
+                                                        lineNumber: 508,
                                                         columnNumber: 25
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4275,7 +4271,7 @@ function ROICalculator({ onBookClick }) {
                                                                 children: "Конверсія з автоматизацією:"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/roi-calculator.tsx",
-                                                                lineNumber: 520,
+                                                                lineNumber: 515,
                                                                 columnNumber: 27
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -4286,19 +4282,19 @@ function ROICalculator({ onBookClick }) {
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/components/roi-calculator.tsx",
-                                                                lineNumber: 521,
+                                                                lineNumber: 516,
                                                                 columnNumber: 27
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/roi-calculator.tsx",
-                                                        lineNumber: 519,
+                                                        lineNumber: 514,
                                                         columnNumber: 25
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/roi-calculator.tsx",
-                                                lineNumber: 512,
+                                                lineNumber: 507,
                                                 columnNumber: 23
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4309,7 +4305,7 @@ function ROICalculator({ onBookClick }) {
                                                         children: "Звідки ці дані?"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/roi-calculator.tsx",
-                                                        lineNumber: 529,
+                                                        lineNumber: 524,
                                                         columnNumber: 25
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -4317,7 +4313,7 @@ function ROICalculator({ onBookClick }) {
                                                         children: recommendation.insight
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/roi-calculator.tsx",
-                                                        lineNumber: 530,
+                                                        lineNumber: 525,
                                                         columnNumber: 25
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -4328,13 +4324,13 @@ function ROICalculator({ onBookClick }) {
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/roi-calculator.tsx",
-                                                        lineNumber: 531,
+                                                        lineNumber: 526,
                                                         columnNumber: 25
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/roi-calculator.tsx",
-                                                lineNumber: 528,
+                                                lineNumber: 523,
                                                 columnNumber: 23
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4346,7 +4342,7 @@ function ROICalculator({ onBookClick }) {
                                                         children: "Змінити дані"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/roi-calculator.tsx",
-                                                        lineNumber: 535,
+                                                        lineNumber: 530,
                                                         columnNumber: 25
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -4358,47 +4354,47 @@ function ROICalculator({ onBookClick }) {
                                                                 weight: "bold"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/roi-calculator.tsx",
-                                                                lineNumber: 545,
+                                                                lineNumber: 540,
                                                                 columnNumber: 27
                                                             }, this),
                                                             "Розрахувати детально"
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/roi-calculator.tsx",
-                                                        lineNumber: 541,
+                                                        lineNumber: 536,
                                                         columnNumber: 25
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/roi-calculator.tsx",
-                                                lineNumber: 534,
+                                                lineNumber: 529,
                                                 columnNumber: 23
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/roi-calculator.tsx",
-                                        lineNumber: 485,
+                                        lineNumber: 480,
                                         columnNumber: 21
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/components/roi-calculator.tsx",
-                                    lineNumber: 483,
+                                    lineNumber: 478,
                                     columnNumber: 17
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/roi-calculator.tsx",
-                            lineNumber: 380,
+                            lineNumber: 375,
                             columnNumber: 15
                         }, this)
                     }, "helper", false, {
                         fileName: "[project]/components/roi-calculator.tsx",
-                        lineNumber: 372,
+                        lineNumber: 367,
                         columnNumber: 13
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/components/roi-calculator.tsx",
-                    lineNumber: 370,
+                    lineNumber: 365,
                     columnNumber: 9
                 }, this),
                 (mode === "manual" || helperApplied) && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
@@ -4411,7 +4407,7 @@ function ROICalculator({ onBookClick }) {
                                     children: "Крок 1 — Вибір пакету"
                                 }, void 0, false, {
                                     fileName: "[project]/components/roi-calculator.tsx",
-                                    lineNumber: 562,
+                                    lineNumber: 557,
                                     columnNumber: 11
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4434,7 +4430,7 @@ function ROICalculator({ onBookClick }) {
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/roi-calculator.tsx",
-                                                    lineNumber: 575,
+                                                    lineNumber: 570,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -4448,24 +4444,24 @@ function ROICalculator({ onBookClick }) {
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/roi-calculator.tsx",
-                                                    lineNumber: 578,
+                                                    lineNumber: 573,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, pkg, true, {
                                             fileName: "[project]/components/roi-calculator.tsx",
-                                            lineNumber: 565,
+                                            lineNumber: 560,
                                             columnNumber: 15
                                         }, this))
                                 }, void 0, false, {
                                     fileName: "[project]/components/roi-calculator.tsx",
-                                    lineNumber: 563,
+                                    lineNumber: 558,
                                     columnNumber: 11
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/roi-calculator.tsx",
-                            lineNumber: 561,
+                            lineNumber: 556,
                             columnNumber: 9
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4476,7 +4472,7 @@ function ROICalculator({ onBookClick }) {
                                     children: "Крок 2 — Твій продукт"
                                 }, void 0, false, {
                                     fileName: "[project]/components/roi-calculator.tsx",
-                                    lineNumber: 588,
+                                    lineNumber: 583,
                                     columnNumber: 11
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4510,7 +4506,7 @@ function ROICalculator({ onBookClick }) {
                                                                     children: products.length > 1 ? `Продукт ${index + 1}` : "Твій продукт"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/roi-calculator.tsx",
-                                                                    lineNumber: 604,
+                                                                    lineNumber: 599,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 products.length > 1 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -4523,18 +4519,18 @@ function ROICalculator({ onBookClick }) {
                                                                         className: "text-slate-400"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/components/roi-calculator.tsx",
-                                                                        lineNumber: 613,
+                                                                        lineNumber: 608,
                                                                         columnNumber: 25
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/roi-calculator.tsx",
-                                                                    lineNumber: 608,
+                                                                    lineNumber: 603,
                                                                     columnNumber: 23
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/components/roi-calculator.tsx",
-                                                            lineNumber: 603,
+                                                            lineNumber: 598,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4548,7 +4544,7 @@ function ROICalculator({ onBookClick }) {
                                                                             children: "Ціна продукту"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/components/roi-calculator.tsx",
-                                                                            lineNumber: 621,
+                                                                            lineNumber: 616,
                                                                             columnNumber: 23
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -4559,13 +4555,13 @@ function ROICalculator({ onBookClick }) {
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/components/roi-calculator.tsx",
-                                                                            lineNumber: 622,
+                                                                            lineNumber: 617,
                                                                             columnNumber: 23
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/components/roi-calculator.tsx",
-                                                                    lineNumber: 620,
+                                                                    lineNumber: 615,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(CustomSlider, {
@@ -4577,7 +4573,7 @@ function ROICalculator({ onBookClick }) {
                                                                     disabled: isLocked
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/roi-calculator.tsx",
-                                                                    lineNumber: 624,
+                                                                    lineNumber: 619,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4588,7 +4584,7 @@ function ROICalculator({ onBookClick }) {
                                                                             children: "$15"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/components/roi-calculator.tsx",
-                                                                            lineNumber: 633,
+                                                                            lineNumber: 628,
                                                                             columnNumber: 23
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -4596,19 +4592,19 @@ function ROICalculator({ onBookClick }) {
                                                                             children: "$1500"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/components/roi-calculator.tsx",
-                                                                            lineNumber: 634,
+                                                                            lineNumber: 629,
                                                                             columnNumber: 23
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/components/roi-calculator.tsx",
-                                                                    lineNumber: 632,
+                                                                    lineNumber: 627,
                                                                     columnNumber: 21
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/components/roi-calculator.tsx",
-                                                            lineNumber: 619,
+                                                            lineNumber: 614,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4621,7 +4617,7 @@ function ROICalculator({ onBookClick }) {
                                                                             children: "Продажів на місяць"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/components/roi-calculator.tsx",
-                                                                            lineNumber: 641,
+                                                                            lineNumber: 636,
                                                                             columnNumber: 23
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -4629,13 +4625,13 @@ function ROICalculator({ onBookClick }) {
                                                                             children: product.sales
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/components/roi-calculator.tsx",
-                                                                            lineNumber: 642,
+                                                                            lineNumber: 637,
                                                                             columnNumber: 23
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/components/roi-calculator.tsx",
-                                                                    lineNumber: 640,
+                                                                    lineNumber: 635,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(CustomSlider, {
@@ -4647,7 +4643,7 @@ function ROICalculator({ onBookClick }) {
                                                                     disabled: isLocked
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/roi-calculator.tsx",
-                                                                    lineNumber: 644,
+                                                                    lineNumber: 639,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4658,7 +4654,7 @@ function ROICalculator({ onBookClick }) {
                                                                             children: "1"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/components/roi-calculator.tsx",
-                                                                            lineNumber: 653,
+                                                                            lineNumber: 648,
                                                                             columnNumber: 23
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -4666,30 +4662,30 @@ function ROICalculator({ onBookClick }) {
                                                                             children: "30"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/components/roi-calculator.tsx",
-                                                                            lineNumber: 654,
+                                                                            lineNumber: 649,
                                                                             columnNumber: 23
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/components/roi-calculator.tsx",
-                                                                    lineNumber: 652,
+                                                                    lineNumber: 647,
                                                                     columnNumber: 21
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/components/roi-calculator.tsx",
-                                                            lineNumber: 639,
+                                                            lineNumber: 634,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, product.id, true, {
                                                     fileName: "[project]/components/roi-calculator.tsx",
-                                                    lineNumber: 593,
+                                                    lineNumber: 588,
                                                     columnNumber: 17
                                                 }, this))
                                         }, void 0, false, {
                                             fileName: "[project]/components/roi-calculator.tsx",
-                                            lineNumber: 591,
+                                            lineNumber: 586,
                                             columnNumber: 13
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$framer$2d$motion$40$11$2e$18$2e$2_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$components$2f$AnimatePresence$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["AnimatePresence"], {
@@ -4717,7 +4713,7 @@ function ROICalculator({ onBookClick }) {
                                                         weight: "bold"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/roi-calculator.tsx",
-                                                        lineNumber: 672,
+                                                        lineNumber: 667,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -4725,30 +4721,30 @@ function ROICalculator({ onBookClick }) {
                                                         children: "Додати ще продукт"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/roi-calculator.tsx",
-                                                        lineNumber: 673,
+                                                        lineNumber: 668,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/roi-calculator.tsx",
-                                                lineNumber: 664,
+                                                lineNumber: 659,
                                                 columnNumber: 17
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/components/roi-calculator.tsx",
-                                            lineNumber: 662,
+                                            lineNumber: 657,
                                             columnNumber: 13
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/roi-calculator.tsx",
-                                    lineNumber: 590,
+                                    lineNumber: 585,
                                     columnNumber: 11
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/roi-calculator.tsx",
-                            lineNumber: 587,
+                            lineNumber: 582,
                             columnNumber: 9
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4759,7 +4755,7 @@ function ROICalculator({ onBookClick }) {
                                     children: "Крок 3 — Результат"
                                 }, void 0, false, {
                                     fileName: "[project]/components/roi-calculator.tsx",
-                                    lineNumber: 682,
+                                    lineNumber: 677,
                                     columnNumber: 11
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4777,7 +4773,7 @@ function ROICalculator({ onBookClick }) {
                                                             className: "text-emerald-400"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/roi-calculator.tsx",
-                                                            lineNumber: 688,
+                                                            lineNumber: 683,
                                                             columnNumber: 17
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -4785,13 +4781,13 @@ function ROICalculator({ onBookClick }) {
                                                             children: "Місячний дохід"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/roi-calculator.tsx",
-                                                            lineNumber: 689,
+                                                            lineNumber: 684,
                                                             columnNumber: 17
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/roi-calculator.tsx",
-                                                    lineNumber: 687,
+                                                    lineNumber: 682,
                                                     columnNumber: 15
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -4801,18 +4797,18 @@ function ROICalculator({ onBookClick }) {
                                                         prefix: "$"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/roi-calculator.tsx",
-                                                        lineNumber: 692,
+                                                        lineNumber: 687,
                                                         columnNumber: 17
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/roi-calculator.tsx",
-                                                    lineNumber: 691,
+                                                    lineNumber: 686,
                                                     columnNumber: 15
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/roi-calculator.tsx",
-                                            lineNumber: 686,
+                                            lineNumber: 681,
                                             columnNumber: 13
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4827,7 +4823,7 @@ function ROICalculator({ onBookClick }) {
                                                             className: "text-slate-400"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/roi-calculator.tsx",
-                                                            lineNumber: 699,
+                                                            lineNumber: 694,
                                                             columnNumber: 17
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -4835,13 +4831,13 @@ function ROICalculator({ onBookClick }) {
                                                             children: "Витрати"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/roi-calculator.tsx",
-                                                            lineNumber: 700,
+                                                            lineNumber: 695,
                                                             columnNumber: 17
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/roi-calculator.tsx",
-                                                    lineNumber: 698,
+                                                    lineNumber: 693,
                                                     columnNumber: 15
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -4851,18 +4847,18 @@ function ROICalculator({ onBookClick }) {
                                                         prefix: "$"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/roi-calculator.tsx",
-                                                        lineNumber: 703,
+                                                        lineNumber: 698,
                                                         columnNumber: 17
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/roi-calculator.tsx",
-                                                    lineNumber: 702,
+                                                    lineNumber: 697,
                                                     columnNumber: 15
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/roi-calculator.tsx",
-                                            lineNumber: 697,
+                                            lineNumber: 692,
                                             columnNumber: 13
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4877,7 +4873,7 @@ function ROICalculator({ onBookClick }) {
                                                             className: "text-emerald-400"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/roi-calculator.tsx",
-                                                            lineNumber: 710,
+                                                            lineNumber: 705,
                                                             columnNumber: 17
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -4885,13 +4881,13 @@ function ROICalculator({ onBookClick }) {
                                                             children: "Чистий прибуток"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/roi-calculator.tsx",
-                                                            lineNumber: 711,
+                                                            lineNumber: 706,
                                                             columnNumber: 17
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/roi-calculator.tsx",
-                                                    lineNumber: 709,
+                                                    lineNumber: 704,
                                                     columnNumber: 15
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -4902,7 +4898,7 @@ function ROICalculator({ onBookClick }) {
                                                             prefix: "$"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/roi-calculator.tsx",
-                                                            lineNumber: 714,
+                                                            lineNumber: 709,
                                                             columnNumber: 17
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -4910,19 +4906,19 @@ function ROICalculator({ onBookClick }) {
                                                             children: "/міс"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/roi-calculator.tsx",
-                                                            lineNumber: 715,
+                                                            lineNumber: 710,
                                                             columnNumber: 17
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/roi-calculator.tsx",
-                                                    lineNumber: 713,
+                                                    lineNumber: 708,
                                                     columnNumber: 15
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/roi-calculator.tsx",
-                                            lineNumber: 708,
+                                            lineNumber: 703,
                                             columnNumber: 13
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4937,7 +4933,7 @@ function ROICalculator({ onBookClick }) {
                                                             className: "text-slate-400"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/roi-calculator.tsx",
-                                                            lineNumber: 722,
+                                                            lineNumber: 717,
                                                             columnNumber: 17
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -4945,13 +4941,13 @@ function ROICalculator({ onBookClick }) {
                                                             children: "Окупність"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/roi-calculator.tsx",
-                                                            lineNumber: 723,
+                                                            lineNumber: 718,
                                                             columnNumber: 17
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/roi-calculator.tsx",
-                                                    lineNumber: 721,
+                                                    lineNumber: 716,
                                                     columnNumber: 15
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -4962,7 +4958,7 @@ function ROICalculator({ onBookClick }) {
                                                                 value: paybackDays
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/roi-calculator.tsx",
-                                                                lineNumber: 728,
+                                                                lineNumber: 723,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -4970,7 +4966,7 @@ function ROICalculator({ onBookClick }) {
                                                                 children: " днів"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/roi-calculator.tsx",
-                                                                lineNumber: 729,
+                                                                lineNumber: 724,
                                                                 columnNumber: 21
                                                             }, this)
                                                         ]
@@ -4979,18 +4975,18 @@ function ROICalculator({ onBookClick }) {
                                                         children: "—"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/roi-calculator.tsx",
-                                                        lineNumber: 732,
+                                                        lineNumber: 727,
                                                         columnNumber: 19
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/roi-calculator.tsx",
-                                                    lineNumber: 725,
+                                                    lineNumber: 720,
                                                     columnNumber: 15
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/roi-calculator.tsx",
-                                            lineNumber: 720,
+                                            lineNumber: 715,
                                             columnNumber: 13
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5005,7 +5001,7 @@ function ROICalculator({ onBookClick }) {
                                                             className: "text-emerald-400"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/roi-calculator.tsx",
-                                                            lineNumber: 740,
+                                                            lineNumber: 735,
                                                             columnNumber: 17
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -5013,13 +5009,13 @@ function ROICalculator({ onBookClick }) {
                                                             children: "Дохід за рік"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/roi-calculator.tsx",
-                                                            lineNumber: 741,
+                                                            lineNumber: 736,
                                                             columnNumber: 17
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/roi-calculator.tsx",
-                                                    lineNumber: 739,
+                                                    lineNumber: 734,
                                                     columnNumber: 15
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -5029,30 +5025,30 @@ function ROICalculator({ onBookClick }) {
                                                         prefix: "$"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/roi-calculator.tsx",
-                                                        lineNumber: 744,
+                                                        lineNumber: 739,
                                                         columnNumber: 17
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/roi-calculator.tsx",
-                                                    lineNumber: 743,
+                                                    lineNumber: 738,
                                                     columnNumber: 15
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/roi-calculator.tsx",
-                                            lineNumber: 738,
+                                            lineNumber: 733,
                                             columnNumber: 13
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/roi-calculator.tsx",
-                                    lineNumber: 684,
+                                    lineNumber: 679,
                                     columnNumber: 11
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/roi-calculator.tsx",
-                            lineNumber: 681,
+                            lineNumber: 676,
                             columnNumber: 9
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5077,14 +5073,14 @@ function ROICalculator({ onBookClick }) {
                                             weight: "bold"
                                         }, void 0, false, {
                                             fileName: "[project]/components/roi-calculator.tsx",
-                                            lineNumber: 762,
+                                            lineNumber: 757,
                                             columnNumber: 17
                                         }, this),
                                         "Зафіксувати результат"
                                     ]
                                 }, "lock", true, {
                                     fileName: "[project]/components/roi-calculator.tsx",
-                                    lineNumber: 754,
+                                    lineNumber: 749,
                                     columnNumber: 15
                                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$framer$2d$motion$40$11$2e$18$2e$2_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].div, {
                                     initial: {
@@ -5106,7 +5102,7 @@ function ROICalculator({ onBookClick }) {
                                             children: "Хочеш такий результат?"
                                         }, void 0, false, {
                                             fileName: "[project]/components/roi-calculator.tsx",
-                                            lineNumber: 773,
+                                            lineNumber: 768,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -5119,13 +5115,13 @@ function ROICalculator({ onBookClick }) {
                                                     children: "(20-30 хв)"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/roi-calculator.tsx",
-                                                    lineNumber: 779,
+                                                    lineNumber: 774,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/roi-calculator.tsx",
-                                            lineNumber: 774,
+                                            lineNumber: 769,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$1_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -5133,23 +5129,23 @@ function ROICalculator({ onBookClick }) {
                                             children: "Натисни на слайдери, щоб змінити значення"
                                         }, void 0, false, {
                                             fileName: "[project]/components/roi-calculator.tsx",
-                                            lineNumber: 781,
+                                            lineNumber: 776,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, "cta", true, {
                                     fileName: "[project]/components/roi-calculator.tsx",
-                                    lineNumber: 766,
+                                    lineNumber: 761,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/roi-calculator.tsx",
-                                lineNumber: 752,
+                                lineNumber: 747,
                                 columnNumber: 11
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/roi-calculator.tsx",
-                            lineNumber: 751,
+                            lineNumber: 746,
                             columnNumber: 9
                         }, this)
                     ]
@@ -5157,12 +5153,12 @@ function ROICalculator({ onBookClick }) {
             ]
         }, void 0, true, {
             fileName: "[project]/components/roi-calculator.tsx",
-            lineNumber: 331,
+            lineNumber: 326,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/components/roi-calculator.tsx",
-        lineNumber: 330,
+        lineNumber: 325,
         columnNumber: 5
     }, this);
 }

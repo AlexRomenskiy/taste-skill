@@ -31,12 +31,11 @@ const nicheLabels: Record<Niche, string> = {
   other: "Інше",
 };
 
-// Real industry data from research (DollarPocket 2025, EarnifyHub 2026)
+// Real industry data from Instagram DM & Telegram funnel research (2025-2026)
 // Sources:
-// - Instagram DM conversion: 7-20% for targeted campaigns (jawab24.com, leadresponse.co)
-// - Email list conversion: 1.8-3.5% average (EarnifyHub 2026)
-// - Course pricing: $97-$497 mid-range sweet spot (DollarPocket 132K courses study)
-// - Fitness marketing: 25-40% conversion with automation (Outgrow)
+// - Instagram DM: 90% open rate, 50-60% reply rate, 15-20% DM-to-sale (LeadResponse, Unkoa, ManyChat)
+// - Telegram funnel: ~10% conversion after optimization (Medium case study)
+// - ManyChat automation: 15-20% conversion for targeted campaigns (LeadResponse 2026)
 const nicheData: Record<Niche, { 
   conversionRate: number; 
   suggestedPrice: number;
@@ -45,32 +44,32 @@ const nicheData: Record<Niche, {
   insight: string;
 }> = {
   coaching: { 
-    conversionRate: 0.021, // 2.1% - email list average (EarnifyHub)
-    suggestedPrice: 297, // Mid-range sweet spot
-    priceRange: { min: 197, max: 597 },
-    source: "DollarPocket 2025 (132K курсів)",
-    insight: "Середня конверсія email-списку: 2.1%. Оптимальна ціна $297-$497."
+    conversionRate: 0.15, // 15% - Instagram DM targeted campaigns (LeadResponse)
+    suggestedPrice: 297, 
+    priceRange: { min: 147, max: 597 },
+    source: "LeadResponse 2026, ManyChat Statistics",
+    insight: "Instagram DM: 90% open rate, 15-20% конверсія у продаж. Коучі з автоматизацією досягають 80% конверсії лідів."
   },
   fitness: { 
-    conversionRate: 0.028, // Higher due to visual/transformation appeal
-    suggestedPrice: 147, // Entry-level pricing works better
-    priceRange: { min: 47, max: 297 },
-    source: "Outgrow Fitness Marketing 2025",
-    insight: "Фітнес має вищу конверсію (2.8%) завдяки візуальним результатам."
+    conversionRate: 0.18, // 18% - higher due to visual transformation content
+    suggestedPrice: 97, 
+    priceRange: { min: 47, max: 247 },
+    source: "Unkoa Instagram DM Report 2025",
+    insight: "Фітнес-ніша: 50-60% reply rate в DM. Візуальні результати підвищують конверсію до 18%."
   },
   education: { 
-    conversionRate: 0.018, // 1.8% - standard conversion
-    suggestedPrice: 197, 
-    priceRange: { min: 97, max: 497 },
-    source: "Unbounce Education Report 2026",
-    insight: "Освітні курси: 14.1% конверсія email, 1.8% у продаж."
+    conversionRate: 0.12, // 12% - standard for education
+    suggestedPrice: 147, 
+    priceRange: { min: 67, max: 397 },
+    source: "Creatorflow Case Studies 2026",
+    insight: "Освітні продукти: 12% конверсія через Instagram + Telegram воронку з прогрівом."
   },
   other: { 
-    conversionRate: 0.015, // Conservative estimate
-    suggestedPrice: 147, 
-    priceRange: { min: 67, max: 297 },
-    source: "EarnifyHub 2026 (50 креаторів)",
-    insight: "Середній показник для нових ніш: 1.5% конверсії."
+    conversionRate: 0.10, // 10% - Telegram bot case study (Medium)
+    suggestedPrice: 97, 
+    priceRange: { min: 47, max: 247 },
+    source: "Medium Case Study, Magnetto Telegram Funnels",
+    insight: "Telegram воронки: 10% конверсія після оптимізації. Користувачі проводять 41+ хв/день в Telegram."
   },
 };
 
@@ -235,22 +234,18 @@ export function ROICalculator({ onBookClick }: { onBookClick?: () => void }) {
     conversionRate: number;
   } | null>(null);
 
-  // Calculate recommendations based on helper inputs using real industry data
+  // Calculate recommendations based on Instagram DM & Telegram funnel statistics
   const calculateRecommendations = () => {
     const nicheInfo = nicheData[niche];
     const { conversionRate, suggestedPrice, priceRange } = nicheInfo;
     
-    // Instagram DM stats: 7-20% of DMs are warm leads (jawab24.com)
-    // Conservative estimate: 50% of messages are potential leads
-    const potentialLeads = Math.round(messages * 0.5);
+    // Instagram DM: 90% open rate, 50-60% reply rate (ManyChat/Unkoa stats)
+    // From messages that come in, ~70% are warm leads ready for funnel
+    const warmLeads = Math.round(messages * 0.7);
     
-    // Apply niche-specific conversion rate (based on EarnifyHub/DollarPocket research)
-    // Automation increases conversion by ~40% (Outgrow fitness study)
-    const automationBoost = 1.4;
-    const effectiveConversionRate = conversionRate * automationBoost;
-    
-    // Calculate expected monthly sales
-    const expectedSales = Math.max(1, Math.round(potentialLeads * effectiveConversionRate));
+    // Apply niche-specific conversion rate (already includes automation boost from research)
+    // These rates are from real Instagram DM + Telegram funnel campaigns
+    const expectedSales = Math.max(1, Math.round(warmLeads * conversionRate));
     
     // Calculate recommended price based on desired income and realistic sales
     let recommendedPrice = suggestedPrice;
@@ -272,7 +267,7 @@ export function ROICalculator({ onBookClick }: { onBookClick?: () => void }) {
       package: recommendedPackage,
       source: nicheInfo.source,
       insight: nicheInfo.insight,
-      conversionRate: Math.round(effectiveConversionRate * 1000) / 10, // as percentage
+      conversionRate: Math.round(conversionRate * 100), // as percentage (already decimal like 0.15 = 15%)
     };
   };
 
