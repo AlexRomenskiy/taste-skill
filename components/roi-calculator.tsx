@@ -53,7 +53,8 @@ function AnimatedNumber({ value, prefix = "", suffix = "" }: { value: number; pr
     requestAnimationFrame(animate);
   }, [value]);
 
-  return <span>{prefix}{displayValue.toLocaleString()}{suffix}</span>;
+  const formatted = displayValue.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  return <span>{prefix}{formatted}{suffix}</span>;
 }
 
 function CustomSlider({
@@ -72,29 +73,73 @@ function CustomSlider({
   disabled: boolean;
 }) {
   const percentage = ((value - min) / (max - min)) * 100;
+  const trackRef = useRef<HTMLDivElement>(null);
+
+  const handleInteraction = (clientX: number) => {
+    if (disabled || !trackRef.current) return;
+    const rect = trackRef.current.getBoundingClientRect();
+    const percent = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
+    const rawValue = min + percent * (max - min);
+    const steppedValue = Math.round(rawValue / step) * step;
+    const clampedValue = Math.max(min, Math.min(max, steppedValue));
+    onChange(clampedValue);
+  };
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (disabled) return;
+    e.preventDefault();
+    handleInteraction(e.clientX);
+
+    const handleMouseMove = (moveEvent: MouseEvent) => {
+      handleInteraction(moveEvent.clientX);
+    };
+
+    const handleMouseUp = () => {
+      document.removeEventListener("mousemove", handleMouseMove);
+      document.removeEventListener("mouseup", handleMouseUp);
+    };
+
+    document.addEventListener("mousemove", handleMouseMove);
+    document.addEventListener("mouseup", handleMouseUp);
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    if (disabled) return;
+    handleInteraction(e.touches[0].clientX);
+
+    const handleTouchMove = (moveEvent: TouchEvent) => {
+      handleInteraction(moveEvent.touches[0].clientX);
+    };
+
+    const handleTouchEnd = () => {
+      document.removeEventListener("touchmove", handleTouchMove);
+      document.removeEventListener("touchend", handleTouchEnd);
+    };
+
+    document.addEventListener("touchmove", handleTouchMove);
+    document.addEventListener("touchend", handleTouchEnd);
+  };
 
   return (
-    <div className="relative w-full h-2 group">
-      <div className="absolute inset-0 bg-slate-700 rounded-full" />
+    <div
+      ref={trackRef}
+      onMouseDown={handleMouseDown}
+      onTouchStart={handleTouchStart}
+      className={`relative w-full h-6 flex items-center group ${disabled ? "cursor-not-allowed" : "cursor-pointer"}`}
+    >
+      {/* Track background */}
+      <div className="absolute inset-x-0 h-2 bg-slate-700 rounded-full" />
+      {/* Filled track */}
       <div
-        className="absolute inset-y-0 left-0 bg-emerald-500 rounded-full transition-all duration-150"
+        className="absolute left-0 h-2 bg-emerald-500 rounded-full"
         style={{ width: `${percentage}%` }}
       />
-      <input
-        type="range"
-        min={min}
-        max={max}
-        step={step}
-        value={value}
-        onChange={(e) => onChange(Number(e.target.value))}
-        disabled={disabled}
-        className={`absolute inset-0 w-full h-full opacity-0 cursor-pointer ${disabled ? "cursor-not-allowed" : ""}`}
-      />
+      {/* Thumb */}
       <div
-        className={`absolute top-1/2 -translate-y-1/2 w-4 h-4 bg-white rounded-full shadow-lg transition-all duration-150 ${
-          disabled ? "opacity-50" : "group-hover:scale-110"
+        className={`absolute w-5 h-5 bg-white rounded-full shadow-lg transition-transform ${
+          disabled ? "opacity-50" : "group-hover:scale-110 group-active:scale-125"
         }`}
-        style={{ left: `calc(${percentage}% - 8px)` }}
+        style={{ left: `calc(${percentage}% - 10px)` }}
       />
     </div>
   );
