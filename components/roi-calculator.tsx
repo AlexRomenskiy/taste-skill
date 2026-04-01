@@ -1,5 +1,5 @@
 "use client";
-
+// ROI Calculator v2 - fixed
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
